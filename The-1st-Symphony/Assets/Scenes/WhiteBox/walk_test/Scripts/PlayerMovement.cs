@@ -5,13 +5,15 @@ using UnityEngine;
 public class Walk_mechanic : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 4f;
-    private float jumpingPower = 7f;
+    public float speed = 4f;
+    public float jumpingPower = 1f;
     private bool isFacingRight = true;
+   
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform GroundCheck;
     [SerializeField] private LayerMask platform;
+    [SerializeField] private AudioSource audioPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -57,4 +59,12 @@ public class Walk_mechanic : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+
+public void OnCollisionEnter2D(Collision2D collision)
+{
+    if(collision.gameObject.tag == "CollisionTagSound"){
+        audioPlayer.Play();
+    }
+}
 }
