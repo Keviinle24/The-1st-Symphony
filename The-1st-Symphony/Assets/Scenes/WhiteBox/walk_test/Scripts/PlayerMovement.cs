@@ -8,6 +8,7 @@ public class Walk_mechanic : MonoBehaviour
     public float speed = 4f;
     public float jumpingPower = 1f;
     private bool isFacingRight = true;
+    private Transform originalParent;
    
 
     [SerializeField] private Rigidbody2D rb;
@@ -20,7 +21,7 @@ public class Walk_mechanic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        originalParent = transform.parent;
     }
 
     // Update is called once per frame
@@ -74,4 +75,14 @@ public void OnCollisionEnter2D(Collision2D collision)
     }
 }
 
+    public void SetParent(Transform newParent)
+    {
+        originalParent = transform.parent;
+        transform.parent = newParent;
+    }
+
+    public void ResetParent()
+    {
+        transform.parent = originalParent;
+    }
 }
