@@ -14,6 +14,8 @@ public class Walk_mechanic : MonoBehaviour
     [SerializeField] private Transform GroundCheck;
     [SerializeField] private LayerMask platform;
     [SerializeField] private AudioSource audioPlayer;
+    [SerializeField] private AudioSource audioPlayer2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -66,5 +68,10 @@ public void OnCollisionEnter2D(Collision2D collision)
     if(collision.gameObject.tag == "CollisionTagSound"){
         audioPlayer.Play();
     }
+
+    else if(collision.gameObject.tag == "CollisionTagGnote"){
+        audioPlayer2.Play();
+    }
 }
+
 }

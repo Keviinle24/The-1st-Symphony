@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CollisionTagSound
+  - CollisionTagGnote
   layers:
   - Default
   - TransparentFX
