@@ -9,13 +9,13 @@ public class Walk_mechanic : MonoBehaviour
     public float jumpingPower = 1f;
     private bool isFacingRight = true;
     private Transform originalParent;
+
    
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform GroundCheck;
     [SerializeField] private LayerMask platform;
-    [SerializeField] private AudioSource audioPlayer;
-    [SerializeField] private AudioSource audioPlayer2;
+    [SerializeField] private AudioSource[] audioplayers;
 
 
     // Start is called before the first frame update
@@ -64,16 +64,22 @@ public class Walk_mechanic : MonoBehaviour
     }
 
 
-public void OnCollisionEnter2D(Collision2D collision)
-{
-    if(collision.gameObject.tag == "CollisionTagSound"){
-        audioPlayer.Play();
-    }
+// public void OnCollisionEnter2D(Collision2D collision)
+// {
+//     if(collision.gameObject.tag == "CollisionTagSound"){
+//         audioplayers[0].Play();
+//     }
 
-    else if(collision.gameObject.tag == "CollisionTagGnote"){
-        audioPlayer2.Play();
-    }
-}
+//     else if(collision.gameObject.tag == "CollisionTagGnote"){
+//         audioplayers[1].Play();
+//     }
+
+//      if(collision.gameObject.tag == "ColorChange")
+//         {
+//             collision.gameObject.GetComponent<SpriteRenderer>().material.color = Color.cyan;
+//         }
+
+// }
 
     public void SetParent(Transform newParent)
     {
