@@ -51,7 +51,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.25
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -162,15 +162,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663c68e3be8257343ba36ee5300741bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpingPower: 8
+  speed: 15
+  jumpingPower: 22
   rb: {fileID: 655264799775386190}
   GroundCheck: {fileID: 2189608457538941752}
   platform:
     serializedVersion: 2
     m_Bits: 1
-  audioPlayer: {fileID: 0}
-  audioPlayer2: {fileID: 0}
+  audioplayers: []
 --- !u!1 &4312014502388258192
 GameObject:
   m_ObjectHideFlags: 0

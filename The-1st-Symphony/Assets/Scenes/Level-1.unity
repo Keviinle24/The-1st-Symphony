@@ -2478,6 +2478,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 655264799775386190, guid: bacd92d77cbd47e43b33aa4c6a0f50b4, type: 3}
+      propertyPath: m_GravityScale
+      value: 2.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1960510547788384198, guid: bacd92d77cbd47e43b33aa4c6a0f50b4, type: 3}
       propertyPath: m_Name
       value: WholeNoteBilly
@@ -2532,7 +2536,7 @@ PrefabInstance:
       objectReference: {fileID: 171396}
     - target: {fileID: 8074086605321943094, guid: bacd92d77cbd47e43b33aa4c6a0f50b4, type: 3}
       propertyPath: jumpingPower
-      value: 15
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

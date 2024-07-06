@@ -13,6 +13,11 @@ public class MusicalPlat : MonoBehaviour
 {
     if (collision.gameObject.CompareTag("Player") && audioplayers != null && audioplayers.Length > 0)
     {
+        //for landing on top of platform
+        ContactPoint2D contact = collision.GetContact(0);
+            Vector2 platformTop = transform.position + Vector3.up * (transform.localScale.y / 2); 
+            if (contact.point.y > platformTop.y)
+            {
         //check if the audio is not already playing
         if (!isAudioPlaying)
         {
@@ -23,6 +28,7 @@ public class MusicalPlat : MonoBehaviour
             StartCoroutine(WaitForAudioFinish(audioplayers[0]));
         }
     }
+}
 }
 
 private IEnumerator WaitForAudioFinish(AudioSource audioSource)
