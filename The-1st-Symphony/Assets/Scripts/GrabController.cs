@@ -24,14 +24,12 @@ public class GrabController : MonoBehaviour
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             }
         }
-             if(isHolding && Input.GetKeyDown(KeyCode.S))
+             if(isHolding && (Input.GetKeyUp(KeyCode.E) || Input.GetAxisRaw("right trigger") == 0f))
             {
-                if (grabCheck.collider.gameObject.transform.parent != originalParent)
-                {
                 isHolding = false;
                 grabCheck.collider.gameObject.transform.parent = originalParent;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;  
-                }
+                
             }
         
     }
