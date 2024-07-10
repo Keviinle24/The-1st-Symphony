@@ -9,6 +9,7 @@ public class Walk_mechanic : MonoBehaviour
     public float jumpingPower = 1f;
     private bool isFacingRight = true;
     private Transform originalParent;
+    public Transform spawnPoint;
 
    
 
@@ -36,10 +37,10 @@ public class Walk_mechanic : MonoBehaviour
 
     if(Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
     {
-        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.3f);
     }
 
-        //Flip();
+        Flip();
 
     }
 
@@ -63,23 +64,19 @@ public class Walk_mechanic : MonoBehaviour
         }
     }
 
+     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("RespawnTrigger"))
+        {
+            RespawnPlayer();
+        }
+    }
 
-// public void OnCollisionEnter2D(Collision2D collision)
-// {
-//     if(collision.gameObject.tag == "CollisionTagSound"){
-//         audioplayers[0].Play();
-//     }
+    void RespawnPlayer()
+    {
+        transform.position = spawnPoint.position;
+    }
 
-//     else if(collision.gameObject.tag == "CollisionTagGnote"){
-//         audioplayers[1].Play();
-//     }
-
-//      if(collision.gameObject.tag == "ColorChange")
-//         {
-//             collision.gameObject.GetComponent<SpriteRenderer>().material.color = Color.cyan;
-//         }
-
-// }
 
     public void SetParent(Transform newParent)
     {
