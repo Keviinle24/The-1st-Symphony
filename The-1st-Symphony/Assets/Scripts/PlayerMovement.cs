@@ -5,9 +5,10 @@ using UnityEngine;
 public class Walk_mechanic : MonoBehaviour
 {
     private float horizontal;
-    public float speed = 4f;
+    public float speed = 15f;
     public float jumpingPower = 1f;
     private bool isFacingRight = true;
+    private float originalSpeed;
     private Transform originalParent;
     public Transform spawnPoint;
 
@@ -23,6 +24,7 @@ public class Walk_mechanic : MonoBehaviour
     void Start()
     {
         originalParent = transform.parent;
+        originalSpeed = speed;
     }
 
     // Update is called once per frame
@@ -82,10 +84,12 @@ public class Walk_mechanic : MonoBehaviour
     {
         originalParent = transform.parent;
         transform.parent = newParent;
+        speed = originalSpeed * 2;
     }
 
     public void ResetParent()
     {
         transform.parent = originalParent;
+        speed = originalSpeed;
     }
 }

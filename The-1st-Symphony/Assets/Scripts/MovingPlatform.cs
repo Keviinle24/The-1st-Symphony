@@ -54,11 +54,16 @@ public class MovingPlatform : MonoBehaviour
 
  private void OnCollisionEnter2D(Collision2D other)
  {
+    ContactPoint2D contact = other.GetContact(0);
+            Vector2 platformTop = transform.position + Vector3.up * (transform.localScale.y / 2); 
+            if (contact.point.y > platformTop.y)
+            {
     var platformMovement = other.collider.GetComponent<Walk_mechanic>();
     if (platformMovement != null) 
     {
         platformMovement.SetParent(transform);
     }
+ }
  }
 
  private void OnCollisionExit2D(Collision2D other)
