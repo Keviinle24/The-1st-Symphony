@@ -9,6 +9,7 @@ public class GrabController : MonoBehaviour
     public Transform originalParent;
     public float rayDist;
     public bool isHolding = false;
+    public bool controllerT = false;
 
     void Update()
     {
@@ -23,10 +24,15 @@ public class GrabController : MonoBehaviour
                 grabCheck.collider.gameObject.transform.position = boxHolder.position;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             }
+            if(Input.GetAxisRaw("right trigger") > 0f)
+            {
+                controllerT = true;
+            }
         }
-             if(isHolding && (Input.GetKeyUp(KeyCode.E) || Input.GetAxisRaw("right trigger") == 0f))
+             if((isHolding && Input.GetKeyUp(KeyCode.E)) || (isHolding && controllerT && Input.GetAxisRaw("right trigger") == 0f))
             {
                 isHolding = false;
+                controllerT = false;
                 grabCheck.collider.gameObject.transform.parent = originalParent;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;  
                 

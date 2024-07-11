@@ -12,6 +12,7 @@ TagManager:
   - RespawnTrigger
   - EnterTrigger
   - ExitTrigger
+  - Ladder
   layers:
   - Default
   - TransparentFX

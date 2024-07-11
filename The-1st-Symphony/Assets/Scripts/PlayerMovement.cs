@@ -5,10 +5,14 @@ using UnityEngine;
 public class Walk_mechanic : MonoBehaviour
 {
     private float horizontal;
+    private float vertical;
     public float speed = 15f;
+    public float climbSpeed = 15f;
     public float jumpingPower = 1f;
     private bool isFacingRight = true;
+    private bool isClimbing;
     private float originalSpeed;
+    private float originalJumpingPower;
     private Transform originalParent;
     public Transform spawnPoint;
 
@@ -19,18 +23,22 @@ public class Walk_mechanic : MonoBehaviour
     [SerializeField] private LayerMask platform;
     [SerializeField] private AudioSource[] audioplayers;
 
+    private HashSet<GameObject> Ladders = new HashSet<GameObject>();
+
 
     // Start is called before the first frame update
     void Start()
     {
         originalParent = transform.parent;
         originalSpeed = speed;
+        originalJumpingPower = jumpingPower;
     }
 
     // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
      if(Input.GetButtonDown("Jump") && isGrounded())
      {
@@ -44,10 +52,26 @@ public class Walk_mechanic : MonoBehaviour
 
         Flip();
 
+        //Ladder
+        if(Ladders.Count > 0 && Mathf.Abs(vertical) > 0f)
+        {
+            isClimbing = true;
+        }
+        else if (Ladders.Count <= 0f)
+        {
+            isClimbing = false;
+        }
+
     }
 
     private void FixedUpdate(){
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+
+        if(isClimbing)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, vertical * climbSpeed);
+        }
+
     }
 
     private bool isGrounded()
@@ -72,6 +96,19 @@ public class Walk_mechanic : MonoBehaviour
         {
             RespawnPlayer();
         }
+        if (collision.CompareTag("Ladder"))
+        {
+            Ladders.Add(collision.gameObject);
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            Ladders.Remove(collision.gameObject);
+
+        }
     }
 
     void RespawnPlayer()
@@ -85,11 +122,14 @@ public class Walk_mechanic : MonoBehaviour
         originalParent = transform.parent;
         transform.parent = newParent;
         speed = originalSpeed * 2;
+        jumpingPower = originalJumpingPower * 1.5f;
     }
 
     public void ResetParent()
     {
         transform.parent = originalParent;
         speed = originalSpeed;
+        jumpingPower = originalJumpingPower;
     }
+
 }
