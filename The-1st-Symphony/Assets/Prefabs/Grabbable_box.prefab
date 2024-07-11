@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2598397801299258487}
   - component: {fileID: 2384051254739178025}
   m_Layer: 0
-  m_Name: Interactble_box
+  m_Name: Grabbable_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

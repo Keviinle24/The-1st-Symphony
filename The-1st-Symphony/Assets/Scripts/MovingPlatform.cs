@@ -7,6 +7,8 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float speed;
     [SerializeField] private float checkDistance = 0.05f;
+    public float playerSpeed = 15f;
+    public float playerJump = 30f;
 
     private Transform targetWaypoint;
     private int currentWaypointIndex = 0;
@@ -61,7 +63,7 @@ public class MovingPlatform : MonoBehaviour
     var platformMovement = other.collider.GetComponent<Walk_mechanic>();
     if (platformMovement != null) 
     {
-        platformMovement.SetParent(transform);
+        platformMovement.SetParent(transform, playerSpeed, playerJump);
     }
  }
  }

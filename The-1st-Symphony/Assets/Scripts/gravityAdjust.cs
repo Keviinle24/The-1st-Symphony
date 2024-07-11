@@ -6,7 +6,6 @@ public class JUmpAdjusttrigger : MonoBehaviour
 {
         public float increasedGravityScale = 4f;
         public float originalGravity = 2.25f;
-        private bool isInTrigger = false;
 
     void OnTriggerEnter2D(Collider2D other)
     {

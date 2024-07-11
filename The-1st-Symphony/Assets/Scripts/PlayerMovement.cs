@@ -16,6 +16,8 @@ public class Walk_mechanic : MonoBehaviour
     private Transform originalParent;
     public Transform spawnPoint;
 
+    private bool canMove = true;
+
    
 
     [SerializeField] private Rigidbody2D rb;
@@ -37,6 +39,7 @@ public class Walk_mechanic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (canMove){
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
@@ -49,7 +52,7 @@ public class Walk_mechanic : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.3f);
     }
-
+        
         Flip();
 
         //Ladder
@@ -61,17 +64,18 @@ public class Walk_mechanic : MonoBehaviour
         {
             isClimbing = false;
         }
-
+        }
     }
 
     private void FixedUpdate(){
+        if(canMove){
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
         if(isClimbing)
         {
             rb.velocity = new Vector2(rb.velocity.x, vertical * climbSpeed);
         }
-
+        }
     }
 
     private bool isGrounded()
@@ -109,6 +113,7 @@ public class Walk_mechanic : MonoBehaviour
             Ladders.Remove(collision.gameObject);
 
         }
+
     }
 
     void RespawnPlayer()
@@ -117,12 +122,12 @@ public class Walk_mechanic : MonoBehaviour
     }
 
 
-    public void SetParent(Transform newParent)
+    public void SetParent(Transform newParent, float platSpeed, float platJump)
     {
         originalParent = transform.parent;
         transform.parent = newParent;
-        speed = originalSpeed * 2;
-        jumpingPower = originalJumpingPower * 1.5f;
+        speed = platSpeed;
+        jumpingPower = platJump;
     }
 
     public void ResetParent()
@@ -130,6 +135,11 @@ public class Walk_mechanic : MonoBehaviour
         transform.parent = originalParent;
         speed = originalSpeed;
         jumpingPower = originalJumpingPower;
+    }
+
+    public void SetMovementEnabled(bool isEnabled)
+    {
+        canMove = isEnabled;
     }
 
 }

@@ -13,6 +13,7 @@ TagManager:
   - EnterTrigger
   - ExitTrigger
   - Ladder
+  - DialogueTrigger
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - Trigger
   - GrabBox
-  - 
+  - Player
   - 
   - 
   - 
