@@ -16,7 +16,7 @@ void Start()
  
 void OnCollisionEnter2D(Collision2D collision)
 {
-   if(collision.gameObject.tag == "Player")
+     if(collision.gameObject.tag == "WholeNote" || collision.gameObject.tag == "HalfNote" || collision.gameObject.tag == "EightNote" || collision.gameObject.tag == "QuarterNote" ) 
 {
     yourText[0].SetActive(true); 
     yourText[1].SetActive(true);
@@ -26,7 +26,7 @@ void OnCollisionEnter2D(Collision2D collision)
  
 void OnCollisionExit2D(Collision2D collision)
 {
-      if(collision.gameObject.tag == "Player")
+     if(collision.gameObject.tag == "WholeNote" || collision.gameObject.tag == "HalfNote" || collision.gameObject.tag == "EightNote" || collision.gameObject.tag == "QuarterNote" ) 
 {
     yourText[0].SetActive(false); 
     yourText[1].SetActive(false);

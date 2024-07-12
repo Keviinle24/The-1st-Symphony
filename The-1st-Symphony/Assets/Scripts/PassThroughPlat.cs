@@ -5,7 +5,7 @@ using UnityEngine;
 public class PassThroughPlat : MonoBehaviour
 {
 
-    [SerializeField] public GameObject player;
+    [SerializeField] private List<GameObject> players = new List<GameObject>();
     private Collider2D _collider;
     private bool _playerOnPlatform;
     void Start()
@@ -16,7 +16,7 @@ public class PassThroughPlat : MonoBehaviour
     private void SetPlayerOnPlatform(Collision2D other, bool value)
     {
        // var player = other.gameObject.GetComponent<Player>();
-        if (player != null)
+        if (players.Contains(other.gameObject))
         {
             _playerOnPlatform = value;
         }
@@ -43,7 +43,7 @@ public class PassThroughPlat : MonoBehaviour
 
     private IEnumerator EnableCollider()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
         _collider.enabled = true;
     }
 }

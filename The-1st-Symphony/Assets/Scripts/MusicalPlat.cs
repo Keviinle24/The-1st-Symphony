@@ -11,7 +11,7 @@ public class MusicalPlat : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
 {
-    if (collision.gameObject.CompareTag("Player") && audioplayers != null && audioplayers.Length > 0)
+    if ((collision.gameObject.tag == "WholeNote" || collision.gameObject.tag == "HalfNote" || collision.gameObject.tag == "EightNote" || collision.gameObject.tag == "QuarterNote" ) && audioplayers != null && audioplayers.Length > 0)
     {
         //for landing on top of platform
         ContactPoint2D contact = collision.GetContact(0);

@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !dialogueActive)
+        if ((other.gameObject.CompareTag("HalfNote") || other.gameObject.CompareTag("WholeNote") || other.gameObject.CompareTag("EightNote") || other.gameObject.CompareTag("QuarterNote")) && !dialogueActive)
         {
             StartDialogue("Hello! This is the beginning of the dialogue. Lets Get out of here.");
             Rigidbody2D pRb = player.GetComponent<Rigidbody2D>();
@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && dialogueActive)
+        if ((other.gameObject.CompareTag("HalfNote") || other.gameObject.CompareTag("WholeNote") || other.gameObject.CompareTag("EightNote") || other.gameObject.CompareTag("QuarterNote")) && dialogueActive)
         {
             EndDialogue();
         player.GetComponent<Walk_mechanic>().SetMovementEnabled(true);

@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcd4aa4c6c4054b8dda9514345f8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1295663308}
+  players:
+  - {fileID: 1295663308}
 --- !u!251 &34843342
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -1822,6 +1823,7 @@ GameObject:
   - component: {fileID: 1017899125}
   - component: {fileID: 1017899124}
   - component: {fileID: 1017899123}
+  - component: {fileID: 1017899127}
   m_Layer: 6
   m_Name: Decreased gravity
   m_TagString: Untagged
@@ -1955,6 +1957,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1017899127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017899122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cb915c74a1a08479fa44ff2fc56bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increasedGravityScale: 4.8
+  originalGravity: 6
 --- !u!1 &1143372889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,6 +2317,18 @@ PrefabInstance:
     - target: {fileID: 1960510547788384198, guid: bacd92d77cbd47e43b33aa4c6a0f50b4, type: 3}
       propertyPath: m_Name
       value: WholeNoteBilly
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960510547788384198, guid: bacd92d77cbd47e43b33aa4c6a0f50b4, type: 3}
+      propertyPath: m_TagString
+      value: WholeNote
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161911658357346232, guid: bacd92d77cbd47e43b33aa4c6a0f50b4, type: 3}
+      propertyPath: cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 1994245919}
+    - target: {fileID: 7032713880820031826, guid: bacd92d77cbd47e43b33aa4c6a0f50b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7800683564363631563, guid: bacd92d77cbd47e43b33aa4c6a0f50b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3017,7 +3045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcd4aa4c6c4054b8dda9514345f8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1295663308}
+  players:
+  - {fileID: 1295663308}
 --- !u!251 &1840621296
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -3523,7 +3552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfcd4aa4c6c4054b8dda9514345f8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1295663308}
+  players:
+  - {fileID: 1295663308}
 --- !u!114 &1943745219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3941,6 +3971,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 405788324}
     m_Modifications:
     - target: {fileID: 1080541955046080167, guid: 2c6962997822e494ebb9ad0362608bba, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080541955046080167, guid: 2c6962997822e494ebb9ad0362608bba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3982,6 +4016,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3571975769069013559, guid: 2c6962997822e494ebb9ad0362608bba, type: 3}
       propertyPath: player
+      value: 
+      objectReference: {fileID: 1295663308}
+    - target: {fileID: 3571975769069013559, guid: 2c6962997822e494ebb9ad0362608bba, type: 3}
+      propertyPath: players.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571975769069013559, guid: 2c6962997822e494ebb9ad0362608bba, type: 3}
+      propertyPath: players.Array.data[0]
       value: 
       objectReference: {fileID: 1295663308}
     - target: {fileID: 3899710024480645474, guid: 2c6962997822e494ebb9ad0362608bba, type: 3}

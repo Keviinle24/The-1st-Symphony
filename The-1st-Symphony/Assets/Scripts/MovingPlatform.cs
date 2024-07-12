@@ -62,9 +62,13 @@ public class MovingPlatform : MonoBehaviour
             {
     var platformMovement = other.collider.GetComponent<Walk_mechanic>();
     if (platformMovement != null) 
+    {   
+        if (other.gameObject.CompareTag("HalfNote") || other.gameObject.CompareTag("WholeNote") || other.gameObject.CompareTag("EightNote") || other.gameObject.CompareTag("QuarterNote"))
     {
         platformMovement.SetParent(transform, playerSpeed, playerJump);
     }
+
+ }
  }
  }
 
@@ -78,3 +82,4 @@ public class MovingPlatform : MonoBehaviour
  }
 
 }
+

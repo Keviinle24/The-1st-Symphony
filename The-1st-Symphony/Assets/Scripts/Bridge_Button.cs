@@ -6,6 +6,7 @@ public class Bridge_Button : MonoBehaviour
 {
     public GameObject button;
     public GameObject bridge;
+    public GameObject exitPortal;
     private SpriteRenderer spriteRenderer;
 
     void Start ()
@@ -16,19 +17,23 @@ public class Bridge_Button : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
        
-        if (other.CompareTag("Player"))  
+        if (other.CompareTag("WholeNote") || other.CompareTag("HalfNote") || other.CompareTag("EightNote") || other.CompareTag("QuarterNote"))
         {
             Color newColor = spriteRenderer.color;
             newColor.a = 0f;  
             spriteRenderer.color = newColor;
 
             bridge.SetActive(true);
+            if (exitPortal != null)
+            {
+                exitPortal.SetActive(true);
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))  
+        if (other.CompareTag("WholeNote") || other.CompareTag("HalfNote") || other.CompareTag("EightNote") || other.CompareTag("QuarterNote"))
         {
             if (spriteRenderer.color.a == 0f)
             {
@@ -36,7 +41,11 @@ public class Bridge_Button : MonoBehaviour
             newColor.a = 1f;  
             spriteRenderer.color = newColor;
             }
-                     bridge.SetActive(false);
+            bridge.SetActive(false);
+            if (exitPortal != null)
+            {
+                exitPortal.SetActive(false);
+            }
         }
     }
 }

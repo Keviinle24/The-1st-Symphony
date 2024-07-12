@@ -10,7 +10,7 @@ public class gravityAdjust2 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !isInTrigger)
+        if ((other.gameObject.CompareTag("HalfNote") || other.gameObject.CompareTag("WholeNote") || other.gameObject.CompareTag("EightNote") || other.gameObject.CompareTag("QuarterNote")) && !isInTrigger)
     {
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
         if (rb != null)
@@ -22,7 +22,7 @@ public class gravityAdjust2 : MonoBehaviour
 }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && isInTrigger)
+        if ((other.gameObject.CompareTag("HalfNote") || other.gameObject.CompareTag("WholeNote") || other.gameObject.CompareTag("EightNote") || other.gameObject.CompareTag("QuarterNote")) && isInTrigger)
     {
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
         if (rb != null)

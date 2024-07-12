@@ -18,7 +18,8 @@ public class ColorChange : MonoBehaviour
 
 public void OnCollisionEnter2D(Collision2D collision)
 {
-     if(collision.gameObject.tag == "Player")
+     if(collision.gameObject.tag == "WholeNote" || collision.gameObject.tag == "HalfNote" || collision.gameObject.tag == "EightNote" || collision.gameObject.tag == "QuarterNote" ) 
+
         {
             if (colors != null && colors.Length > 0){
 
@@ -33,7 +34,7 @@ public void OnCollisionEnter2D(Collision2D collision)
 
 public void OnCollisionExit2D(Collision2D collision)
 {
-         if(collision.gameObject.tag == "Player")
+     if(collision.gameObject.tag == "WholeNote" || collision.gameObject.tag == "HalfNote" || collision.gameObject.tag == "EightNote" || collision.gameObject.tag == "QuarterNote" ) 
         {
             spriteRenderer.material.color = defaultColor;
 
