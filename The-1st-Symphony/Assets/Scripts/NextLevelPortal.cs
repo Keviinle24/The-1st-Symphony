@@ -7,9 +7,22 @@ using UnityEngine.SceneManagement;
 public class NextLevel : MonoBehaviour
 {
 
-     public GameObject[] players;
+    FadeInOut fade;
+    public GameObject[] players;
     private HashSet<GameObject> enteredPlayers = new HashSet<GameObject>();
 
+    void Start()
+    {
+        fade = FindObjectOfType<FadeInOut>();
+    }
+
+    public IEnumerator ChangeScene()
+    {
+        fade.FadeIn();
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (IsPlayer(other.gameObject))
@@ -19,7 +32,7 @@ public class NextLevel : MonoBehaviour
             // Check if all players have entered
             if (AllPlayersEntered())
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                StartCoroutine(ChangeScene());
             }
         }
     }
