@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+
 
 public class DialogueManager : MonoBehaviour
 {
+
+    [SerializeField] private GameObject _DialogueBoxFirst;
 
     public GameObject dialogueBox; 
     public TMP_Text dialogueText; 
@@ -35,6 +39,7 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogWarning("Rigidbody2D component not found on player GameObject.");
         }
+        EventSystem.current.SetSelectedGameObject(_DialogueBoxFirst);
            
         }
 
@@ -46,7 +51,7 @@ public class DialogueManager : MonoBehaviour
         {
             EndDialogue();
         player.GetComponent<Walk_mechanic>().SetMovementEnabled(true);
-
+        EventSystem.current.SetSelectedGameObject(null);
         }
     }
 
@@ -72,4 +77,8 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Velocity is " + playRb.velocity);
 
     }
+
+
+
+
 }
