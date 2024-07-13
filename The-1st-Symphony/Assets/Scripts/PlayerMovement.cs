@@ -62,7 +62,7 @@ public class Walk_mechanic : MonoBehaviour
         }
         else if (Ladders.Count <= 0f)
         {
-            isClimbing = false;
+            StartCoroutine(IsClimbingBuffer());
         }
         }
     }
@@ -92,6 +92,13 @@ public class Walk_mechanic : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    private IEnumerator IsClimbingBuffer()
+    {
+        yield return new WaitForSeconds(.4f);
+    
+    isClimbing = false;
     }
 
      private void OnTriggerEnter2D(Collider2D collision)
