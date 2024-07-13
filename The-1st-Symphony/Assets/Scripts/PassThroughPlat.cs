@@ -43,7 +43,7 @@ public class PassThroughPlat : MonoBehaviour
 
     private IEnumerator EnableCollider()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.4f);
         _collider.enabled = true;
     }
 }
