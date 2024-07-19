@@ -13,6 +13,7 @@ public class Walk_mechanic : MonoBehaviour
     private bool isClimbing;
     private float originalSpeed;
     private float originalJumpingPower;
+    private float originalClimbSpeed;
     private Transform originalParent;
     public Transform spawnPoint;
 
@@ -34,6 +35,7 @@ public class Walk_mechanic : MonoBehaviour
         originalParent = transform.parent;
         originalSpeed = speed;
         originalJumpingPower = jumpingPower;
+        originalClimbSpeed = climbSpeed;
     }
 
     // Update is called once per frame
@@ -126,6 +128,8 @@ public class Walk_mechanic : MonoBehaviour
     void RespawnPlayer()
     {
         transform.position = spawnPoint.position;
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
     }
 
 
@@ -147,6 +151,20 @@ public class Walk_mechanic : MonoBehaviour
     public void SetMovementEnabled(bool isEnabled)
     {
         canMove = isEnabled;
+    }
+
+    public void ChangeSpeed( float NewSpeed, float NewJump, float NewClimb)
+    {
+        speed = NewSpeed;
+        jumpingPower = NewJump;
+        climbSpeed = NewClimb;
+    }
+
+    public void ResetSpeed()
+    {
+        speed = originalSpeed;
+        jumpingPower = originalJumpingPower;
+        climbSpeed = originalJumpingPower;
     }
 
 }
