@@ -19,6 +19,7 @@ TagManager:
   - EightNote
   - QuarterNote
   - PortalTrigger
+  - PassThroughPlat
   layers:
   - Default
   - TransparentFX
@@ -64,4 +65,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2969303523
+    locked: 0
+  - name: Foreground
+    uniqueID: 1454610735
     locked: 0

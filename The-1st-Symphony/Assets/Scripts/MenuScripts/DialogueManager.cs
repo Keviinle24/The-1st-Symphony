@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
     {
         if ((other.gameObject.CompareTag("HalfNote") || other.gameObject.CompareTag("WholeNote") || other.gameObject.CompareTag("EightNote") || other.gameObject.CompareTag("QuarterNote")) && !dialogueActive)
         {
-            StartDialogue("Hello! This is the beginning of the dialogue. Lets Get out of here.");
+            StartDialogue();
             Rigidbody2D pRb = player.GetComponent<Rigidbody2D>();
            
             if (pRb != null)
@@ -55,11 +55,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void StartDialogue(string dialogue)
+    void StartDialogue()
     {
         dialogueActive = true;
         dialogueBox.SetActive(true);
-        dialogueText.text = dialogue;
     }
 
     void EndDialogue()

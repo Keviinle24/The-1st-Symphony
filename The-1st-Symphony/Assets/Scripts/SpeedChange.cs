@@ -36,4 +36,30 @@ public class SpeedChange : MonoBehaviour
     }
     }
 
+    //  private void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     var platformMovement = other.collider.GetComponent<Walk_mechanic>();
+    // if (platformMovement != null) 
+    // { 
+    //     if (other.gameObject.CompareTag("HalfNote") || other.gameObject.CompareTag("WholeNote") || other.gameObject.CompareTag("EightNote") || other.gameObject.CompareTag("QuarterNote"))
+    // {
+    //     platformMovement.ChangeSpeed( playerSpeed, playerJump, playerClimb);
+
+    // }
+    // }
+    // }
+
+    // private void OnCollisionExit2D(Collision2D other)
+    // {
+    //     var platformMovement = other.collider.GetComponent<Walk_mechanic>();
+    // if (platformMovement != null) 
+    // { 
+    //     if (other.gameObject.CompareTag("HalfNote") || other.gameObject.CompareTag("WholeNote") || other.gameObject.CompareTag("EightNote") || other.gameObject.CompareTag("QuarterNote"))
+    // {
+    //     platformMovement.ResetSpeed();
+
+    // }
+    // }
+    // }
+
 }

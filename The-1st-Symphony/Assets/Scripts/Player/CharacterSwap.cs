@@ -13,15 +13,19 @@ public class CharacterSwap : MonoBehaviour
 
     void Start()
     {
-
+        if(characters.Length > 1){
         //deactivates all characters and cameras 
-        for (int i = 0; i < characters.Length; i++)
+        for (int i = 1; i < characters.Length; i++)
         {
-            characters[i].SetActive(false);
+            characters[i].SetActive(true);
+            characters[i].GetComponent<Walk_mechanic>().SetMovementEnabled(false);
+
             cameras[i].gameObject.SetActive(false);
+        }
         }
         //only the first character is active at start
         SetActiveCharacter(activeCharacterIndex);
+        
     }
 
     void Update()
@@ -52,6 +56,7 @@ public class CharacterSwap : MonoBehaviour
         activeCharacterIndex = (activeCharacterIndex + direction + characters.Length) % characters.Length;
 
         //activate the new active character
+        Debug.Log("" + activeCharacterIndex);
         SetActiveCharacter(activeCharacterIndex);
         characters[activeCharacterIndex].GetComponent<Walk_mechanic>().SetMovementEnabled(true);
 

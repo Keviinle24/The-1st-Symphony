@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1406789099759361536}
   - component: {fileID: 5806557436948585848}
   - component: {fileID: 5285533639089735586}
-  - component: {fileID: 5077348505028741883}
+  - component: {fileID: 4708422179496521378}
   m_Layer: 3
   m_Name: WholeNote
   m_TagString: WholeNote
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853335726809391398}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.8, y: 4.2, z: 10}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
---- !u!68 &5077348505028741883
-EdgeCollider2D:
+--- !u!61 &4708422179496521378
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -199,7 +199,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 1853335726809391398}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 66cc004f80bfdbf46b707b25fdc028ef, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -222,24 +222,19 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.05926323, y: 1.1907885}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 18.01, y: 18}
+    newSize: {x: 6.26, y: 5.03}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.646801, y: 10.403479}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -2.6459455, y: 5.999915}
-  - {x: -2.1603851, y: 6.219323}
-  - {x: 2.1572876, y: 6.1717415}
-  - {x: 2.8879242, y: 6.0553737}
-  - {x: 3.660904, y: 5.383977}
-  - {x: 3.9846344, y: 4.891086}
-  - {x: 4.3743744, y: 4.4018674}
-  - {x: 4.3727417, y: -3.9965963}
-  - {x: -4.2526245, y: -4.0132093}
-  - {x: -4.2633057, y: 4.3015594}
-  - {x: -2.6183825, y: 6.0117664}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!1 &2388844499144270088
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +296,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
