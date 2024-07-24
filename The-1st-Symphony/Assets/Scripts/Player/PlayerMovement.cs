@@ -23,6 +23,7 @@ public class Walk_mechanic : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform GroundCheck;
+    [SerializeField] private Transform GroundCheck1;
     [SerializeField] private LayerMask platform;
     [SerializeField] private AudioSource[] audioplayers;
 
@@ -82,7 +83,15 @@ public class Walk_mechanic : MonoBehaviour
 
     private bool isGrounded()
     {
+        if (GroundCheck1 != null && isGrounded2()){
+        return Physics2D.OverlapCircle(GroundCheck1.position, 0.2f, platform);
+        }
         return Physics2D.OverlapCircle(GroundCheck.position, 0.2f, platform);
+
+    }
+
+    private bool isGrounded2(){
+        return Physics2D.OverlapCircle(GroundCheck1.position, 0.2f, platform);
     }
 
     private void Flip()
