@@ -8916,6 +8916,14 @@ PrefabInstance:
       propertyPath: grabDetect
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1936408317565166415, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 36.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936408317565166415, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 36.968563
+      objectReference: {fileID: 0}
     - target: {fileID: 1989227677037372983, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -9288,6 +9296,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 418765074}
+    - target: {fileID: 1989227677037372983, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: cameras.Array.data[0]
       value: 

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1243639256962621951}
   - component: {fileID: 5013390349812303514}
   - component: {fileID: 861546646654893956}
-  - component: {fileID: 1989227677037372983}
+  - component: {fileID: 1936408317565166415}
   - component: {fileID: 5283656118672385114}
   - component: {fileID: 5637618485658251049}
   m_Layer: 3
@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
---- !u!68 &1989227677037372983
-EdgeCollider2D:
+--- !u!60 &1936408317565166415
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -231,21 +231,25 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 18, y: 18}
+    newSize: {x: 6.26, y: 5.03}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: -3.6586914, y: 7.747304}
-  - {x: -3.658691, y: 1.409061}
-  - {x: 4.53302, y: 1.409061}
-  - {x: 4.53302, y: -8.846405}
-  - {x: -3.8279572, y: -8.846405}
-  - {x: -3.827957, y: -0.9747114}
-  - {x: -4.35, y: -0.9747114}
-  - {x: -4.35, y: 7.747483}
-  - {x: -3.6585312, y: 7.7474833}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+    m_Paths:
+    - - {x: 4.5488605, y: 1.474484}
+      - {x: -3.67818, y: 1.4744838}
+      - {x: -3.6781802, y: 7.72876}
+      - {x: -4.323589, y: 7.7287602}
+      - {x: -4.323589, y: 1.5062476}
+      - {x: -4.323589, y: -8.839983}
+      - {x: 4.548861, y: -8.839983}
+  m_UseDelaunayMesh: 0
 --- !u!61 &5283656118672385114
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -303,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826b310d4abc58a45a03a5112c66395f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderA: {fileID: 1989227677037372983}
+  colliderA: {fileID: 1936408317565166415}
   colliderB: {fileID: 5283656118672385114}
 --- !u!1 &1136151100398893978
 GameObject:
