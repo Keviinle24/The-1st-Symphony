@@ -8,10 +8,14 @@ public class TextAppearPlat : MonoBehaviour
  
 void Start()
 {
-    yourText[0].SetActive(false); 
-    yourText[1].SetActive(false);
-    yourText[2].SetActive(false);
+    yourText[0].SetActive(false);
+    if(yourText.Length > 1){ 
+        for(int i = 1; i < yourText.Length; i++){
+    
+        yourText[i].SetActive(false);
     }
+}
+}
  
  
 void OnCollisionEnter2D(Collision2D collision)
@@ -19,8 +23,12 @@ void OnCollisionEnter2D(Collision2D collision)
      if(collision.gameObject.tag == "WholeNote" || collision.gameObject.tag == "HalfNote" || collision.gameObject.tag == "EightNote" || collision.gameObject.tag == "QuarterNote" ) 
 {
     yourText[0].SetActive(true); 
-    yourText[1].SetActive(true);
-    yourText[2].SetActive(true);
+    if(yourText.Length > 1){ 
+        for(int i = 1; i < yourText.Length; i++){
+    
+        yourText[i].SetActive(true);
+    }
+}
 }
 }
  
@@ -29,8 +37,12 @@ void OnCollisionExit2D(Collision2D collision)
      if(collision.gameObject.tag == "WholeNote" || collision.gameObject.tag == "HalfNote" || collision.gameObject.tag == "EightNote" || collision.gameObject.tag == "QuarterNote" ) 
 {
     yourText[0].SetActive(false); 
-    yourText[1].SetActive(false);
-    yourText[2].SetActive(false);
+        if(yourText.Length > 1){ 
+        for(int i = 1; i < yourText.Length; i++){
+    
+        yourText[i].SetActive(false);
+    }
+}
 }
 }
 }
