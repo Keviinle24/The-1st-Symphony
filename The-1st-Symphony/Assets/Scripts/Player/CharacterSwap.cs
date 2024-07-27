@@ -7,6 +7,7 @@ public class CharacterSwap : MonoBehaviour
 {
     public GameObject[] characters; 
     public Camera[] cameras; 
+    public GameObject[] lights;
 
     private int activeCharacterIndex = 0; 
     
@@ -19,6 +20,8 @@ public class CharacterSwap : MonoBehaviour
         {
             characters[i].SetActive(true);
             characters[i].GetComponent<Walk_mechanic>().SetMovementEnabled(false);
+            lights[i].gameObject.SetActive(false);
+
 
             cameras[i].gameObject.SetActive(false);
         }
@@ -50,6 +53,8 @@ public class CharacterSwap : MonoBehaviour
         //deactivate the current active character
         characters[activeCharacterIndex].GetComponent<Walk_mechanic>().SetMovementEnabled(false);
         cameras[activeCharacterIndex].gameObject.SetActive(false);
+        lights[activeCharacterIndex].gameObject.SetActive(false);
+
 
 
         //move to the next character (loops back to the first if needed)
@@ -66,6 +71,8 @@ public class CharacterSwap : MonoBehaviour
     {
         characters[index].SetActive(true);
         cameras[index].gameObject.SetActive(true);
+        lights[index].gameObject.SetActive(true);
+
     }
 
     public void NewCamera(GameObject newCamera)
