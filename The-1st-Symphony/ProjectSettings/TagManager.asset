@@ -8,6 +8,23 @@ TagManager:
   - Wall
   - pushable
   - player
+  - CollisionTagSound
+  - CollisionTagGnote
+  - ColorChange
+  - GrabBox
+  - box
+  - RespawnTrigger
+  - EnterTrigger
+  - ExitTrigger
+  - Ladder
+  - DialogueTrigger
+  - HalfNote
+  - WholeNote
+  - EightNote
+  - QuarterNote
+  - PortalTrigger
+  - PassThroughPlat
+  - Rope
   layers:
   - Default
   - TransparentFX
