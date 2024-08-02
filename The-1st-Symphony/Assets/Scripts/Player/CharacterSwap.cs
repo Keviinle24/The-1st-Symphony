@@ -20,10 +20,9 @@ public class CharacterSwap : MonoBehaviour
         {
             characters[i].SetActive(true);
             characters[i].GetComponent<Walk_mechanic>().SetMovementEnabled(false);
-            lights[i].gameObject.SetActive(false);
-
 
             cameras[i].gameObject.SetActive(false);
+            lights[i].gameObject.SetActive(false);
         }
         }
         //only the first character is active at start
