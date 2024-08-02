@@ -2740,7 +2740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuCanvasGO: {fileID: 163456514}
   _settingsMenuCanvasGO: {fileID: 366569453}
-  _playerAttack: {fileID: 0}
+  _playerAttack: {fileID: 1603859919}
   _mainMenuFirst: {fileID: 2031399815}
   _settingsMenuFirst: {fileID: 1771343927}
 --- !u!4 &600283618
@@ -6406,11 +6406,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515346495}
   m_CullTransparentMesh: 1
---- !u!1 &1521024289 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1930482271849156858, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
-  m_PrefabInstance: {fileID: 1730644253}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1534905788
 GameObject:
   m_ObjectHideFlags: 0
@@ -7043,7 +7038,7 @@ PrefabInstance:
     - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: light
       value: 
-      objectReference: {fileID: 1521024289}
+      objectReference: {fileID: 0}
     - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: lights.Array.size
       value: 2
@@ -7059,7 +7054,7 @@ PrefabInstance:
     - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: lights.Array.data[1]
       value: 
-      objectReference: {fileID: 1521024289}
+      objectReference: {fileID: 0}
     - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: cameras.Array.data[0]
       value: 
@@ -7584,7 +7579,7 @@ PrefabInstance:
     - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
       propertyPath: lights.Array.data[1]
       value: 
-      objectReference: {fileID: 1521024289}
+      objectReference: {fileID: 0}
     - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
       propertyPath: cameras.Array.data[0]
       value: 
@@ -9739,9 +9734,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 600283617}
     - target: {fileID: 7158934799460083921, guid: 07e0ceec28648884cbcccc8f84c87bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158934799460083921, guid: 07e0ceec28648884cbcccc8f84c87bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158934799460083921, guid: 07e0ceec28648884cbcccc8f84c87bed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 600283617}
+    - target: {fileID: 7158934799460083921, guid: 07e0ceec28648884cbcccc8f84c87bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 600283617}
+    - target: {fileID: 7158934799460083921, guid: 07e0ceec28648884cbcccc8f84c87bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158934799460083921, guid: 07e0ceec28648884cbcccc8f84c87bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Unpause
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158934799460083921, guid: 07e0ceec28648884cbcccc8f84c87bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158934799460083921, guid: 07e0ceec28648884cbcccc8f84c87bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
