@@ -19,6 +19,11 @@ public class Walk_mechanic : MonoBehaviour
 
     private bool canMove = true;
 
+    private bool swinging = false;
+
+    private Transform currentSwingable;
+    public Vector2 ropeVelocityGrabbed;
+
    
 
     [SerializeField] private Rigidbody2D rb;
@@ -66,6 +71,16 @@ public class Walk_mechanic : MonoBehaviour
         else if (Ladders.Count <= 0f)
         {
             StartCoroutine(IsClimbingBuffer());
+        }
+        }
+
+        if (swinging == true){
+        
+        transform.position = currentSwingable.position;
+        if(Input.GetButtonUp("Jump") && swinging == true)
+        {
+            swinging = false;
+            rb.velocity = new Vector2(currentSwingable.GetComponent<Rigidbody2D>().velocity.x, currentSwingable.GetComponent<Rigidbody2D>().velocity.y + 10);
         }
         }
     }
@@ -121,6 +136,16 @@ public class Walk_mechanic : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             Ladders.Add(collision.gameObject);
+        }
+        if (collision.CompareTag("Rope")){
+        Rigidbody2D ropeRigidbody = collision.GetComponent<Rigidbody2D>();
+        
+        if (ropeRigidbody != null)
+        {            
+            ropeRigidbody.velocity = ropeVelocityGrabbed;
+            swinging = true;
+            currentSwingable = collision.transform;
+        }
         }
     }
 
