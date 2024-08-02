@@ -4,6 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ground
+  - Wall
+  - pushable
+  - player
   - CollisionTagSound
   - CollisionTagGnote
   - ColorChange
@@ -25,12 +29,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - player
   - Water
   - UI
-  - Trigger
-  - GrabBox
-  - Player
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -57,16 +61,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: BG
-    uniqueID: 2881363629
-    locked: 0
-  - name: Level
-    uniqueID: 3542214125
-    locked: 0
-  - name: Player
-    uniqueID: 2969303523
-    locked: 0
-  - name: Foreground
-    uniqueID: 1454610735
     locked: 0
