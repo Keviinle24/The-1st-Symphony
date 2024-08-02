@@ -20,6 +20,7 @@ TagManager:
   - QuarterNote
   - PortalTrigger
   - PassThroughPlat
+  - Rope
   layers:
   - Default
   - TransparentFX
