@@ -1393,7 +1393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &335469294
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1720,6 +1720,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &389630122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1222490020141482104, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
+  m_PrefabInstance: {fileID: 6333599614113724366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &406789400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3614,6 +3619,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4416833682232035799, guid: b8cbc2d8254c083458f272cadace067b, type: 3}
   m_PrefabInstance: {fileID: 208791824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &799489210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6576617672692706771, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+  m_PrefabInstance: {fileID: 5212154378611077205}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &818560339 stripped
 Transform:
@@ -9902,7 +9912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2140990726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10261,9 +10271,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 938661564}
     - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+      propertyPath: lights.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: cameras.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+      propertyPath: lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 389630122}
+    - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+      propertyPath: lights.Array.data[1]
+      value: 
+      objectReference: {fileID: 799489210}
     - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: cameras.Array.data[0]
       value: 
@@ -10350,9 +10372,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 938661564}
     - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
+      propertyPath: lights.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
       propertyPath: cameras.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
+      propertyPath: lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 389630122}
+    - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
+      propertyPath: lights.Array.data[1]
+      value: 
+      objectReference: {fileID: 799489210}
     - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
       propertyPath: cameras.Array.data[0]
       value: 
