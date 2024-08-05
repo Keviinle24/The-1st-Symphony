@@ -17,6 +17,9 @@ public class move : MonoBehaviour
     // Boolean to check if the character is touching a wall
     private bool isTouchingWall;
     private bool isBusy = false;
+    private PlatformController currentPlatform;
+    private Vector2 velocityToAdd;
+
 
     // Called when the script instance is being loaded
     private void Awake()
@@ -31,12 +34,13 @@ public class move : MonoBehaviour
         body.interpolation = RigidbodyInterpolation2D.Interpolate;
 
         EventManager.OnBouncePadHit += OnBouncePadHit;
+        EventManager.OnTickVelocity += OnPlatformTick;
   
     }
 
     private void OnDestroy() {
         EventManager.OnBouncePadHit -= OnBouncePadHit;
-       
+        EventManager.OnTickVelocity -= OnPlatformTick;
     }
 
     private void OnBouncePadHit(string tag, BouncePad bp) {
@@ -56,7 +60,7 @@ public class move : MonoBehaviour
 
 
     // Called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         if (isBusy) return;
         
@@ -114,6 +118,7 @@ public class move : MonoBehaviour
         anim.SetBool("walk", horizontalInput != 0);
         // anim.SetBool("jump, body.velocity.y > 0");
         // anim.SetBool("falling, body.velocity.y <= 0");
+        transform.position += (Vector3)velocityToAdd;
  
     }
 
@@ -128,6 +133,17 @@ public class move : MonoBehaviour
             jumpCount = 0;
             isJumping = false; 
         }
+
+        if (collision.gameObject.tag == "platform") {
+            grounded = true;
+            jumpCount = 0;
+            isJumping = false; 
+            currentPlatform = collision.gameObject.GetComponent<PlatformController>();
+            if (currentPlatform != null) {
+                EventManager.EnteredPlatform(currentPlatform);
+            }
+        }
+
 
         // Check if the collision is with a wall
         if (collision.gameObject.tag == "Wall")
@@ -147,11 +163,27 @@ public class move : MonoBehaviour
             grounded = false;
         }
 
+        if (collision.gameObject.tag == "platform") {
+            grounded = false;
+
+             if (currentPlatform != null) {
+
+                EventManager.ExitedPlatform(currentPlatform);
+                currentPlatform = null;
+                velocityToAdd = Vector2.zero;
+            }
+        }
+
         // Check if the collision was with a wall
         if (collision.gameObject.tag == "Wall")
         {
             // Set isTouchingWall to false
             isTouchingWall = false;
         }
+    }
+
+    private void OnPlatformTick(Vector2 vel) {
+        velocityToAdd = vel;
+      
     }
 }

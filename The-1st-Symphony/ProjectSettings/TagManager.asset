@@ -21,6 +21,11 @@ TagManager:
   - PortalTrigger
   - PassThroughPlat
   - Rope
+  - Ground
+  - Wall
+  - pushable
+  - player
+  - platform
   layers:
   - Default
   - TransparentFX
