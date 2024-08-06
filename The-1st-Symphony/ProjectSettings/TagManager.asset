@@ -21,6 +21,12 @@ TagManager:
   - PortalTrigger
   - PassThroughPlat
   - Rope
+  - pushable
+  - Ground
+  - Wall
+  - player
+  - CheckPoint
+  - Drum
   layers:
   - Default
   - TransparentFX

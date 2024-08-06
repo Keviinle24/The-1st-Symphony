@@ -1,29 +1,46 @@
-//Add Rigidbody to the falling object platform
-//Switch body type to kinematic so that I can control the physics of the object
-
-using System.Collections; // Allows the use of IEnumerator for coroutines.
+using System.Collections;
 using UnityEngine;
 
 public class FallingPlatform : MonoBehaviour
 {
-    private float fallDelay = .4f; // Time delay before the platform starts to fall.
-    private float destroyDelay = 4f; // Time delay before the platform is destroyed after it starts falling.
+    private float fallDelay = .4f;
+    private float destroyDelay = 4f;
 
-    [SerializeField] private Rigidbody2D rb; // A reference to the Rigidbody2D component attached to the platform. [SerializeField] allows it to be set in the Unity Editor.
+    [SerializeField] private Rigidbody2D rb;
 
-    private void OnCollisionEnter2D(Collision2D collision) // This function is called when another object collides with the platform.
+    private Vector2 initialPosition;
+    private RigidbodyType2D initialBodyType;
+    private float initialGravityScale;
+
+    private void Start()
     {
-        if (collision.gameObject.CompareTag("player")) // Checks if the object that collided has the tag "player".
+        initialPosition = transform.position;
+        initialBodyType = rb.bodyType;
+        initialGravityScale = rb.gravityScale;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("player"))
         {
-            StartCoroutine(Fall()); // Starts the coroutine Fall() to handle the falling action.
+            StartCoroutine(Fall());
         }
     }
 
-    private IEnumerator Fall() // Defines a coroutine called Fall() that can pause execution.
+    private IEnumerator Fall()
     {
-        yield return new WaitForSeconds(fallDelay); // Pauses the coroutine for fallDelay seconds.
-        rb.bodyType = RigidbodyType2D.Dynamic; // Changes the Rigidbody2D to Dynamic, making it fall due to gravity.
-        rb.gravityScale = 5; // Increases the gravity scale for faster falling.
-        Destroy(gameObject, destroyDelay); // Destroys the game object after destroyDelay seconds.
+        yield return new WaitForSeconds(fallDelay);
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.gravityScale = 5;
+        Destroy(gameObject, destroyDelay);
+    }
+
+    public void ResetPlatform()
+    {
+        transform.position = initialPosition;
+        rb.bodyType = initialBodyType;
+        rb.gravityScale = initialGravityScale;
+        rb.velocity = Vector2.zero; // Optional: Reset velocity if needed
+        rb.angularVelocity = 0;    // Optional: Reset angular velocity if needed
     }
 }
