@@ -112,8 +112,10 @@ public class move : MonoBehaviour
         }
         // Set the walk animation based on horizontal input
         anim.SetBool("walk", horizontalInput != 0);
-        // anim.SetBool("jump, body.velocity.y > 0");
-        // anim.SetBool("falling, body.velocity.y <= 0");
+        anim.SetBool("jumping", body.velocity.y > 0);
+        anim.SetBool("falling", body.velocity.y <= 0);
+        anim.SetFloat("isJumping", body.velocity.y);
+        anim.SetFloat("isFalling", body.velocity.y);
  
     }
 

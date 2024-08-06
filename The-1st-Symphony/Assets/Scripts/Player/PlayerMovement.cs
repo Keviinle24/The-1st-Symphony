@@ -24,7 +24,8 @@ public class Walk_mechanic : MonoBehaviour
     private Transform currentSwingable;
     public Vector2 ropeVelocityGrabbed;
 
-   
+   private bool touchingBox;
+    private Animator anim;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform GroundCheck;
@@ -42,6 +43,8 @@ public class Walk_mechanic : MonoBehaviour
         originalSpeed = speed;
         originalJumpingPower = jumpingPower;
         originalClimbSpeed = climbSpeed;
+                anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -72,7 +75,7 @@ public class Walk_mechanic : MonoBehaviour
         {
             StartCoroutine(IsClimbingBuffer());
         }
-        }
+        
 
         if (swinging == true){
         
@@ -83,7 +86,17 @@ public class Walk_mechanic : MonoBehaviour
             rb.velocity = new Vector2(currentSwingable.GetComponent<Rigidbody2D>().velocity.x, currentSwingable.GetComponent<Rigidbody2D>().velocity.y + 10);
         }
         }
+
+        // Set the walk animation based on horizontal input
+        anim.SetBool("walk", horizontal != 0);
+        anim.SetBool("jumping", rb.velocity.y > 0);
+        anim.SetBool("falling", rb.velocity.y <= 0);
+        anim.SetFloat("isJumping", rb.velocity.y);
+        anim.SetFloat("isFalling", rb.velocity.y);
+        //anim.SetBool("pushing", Push() > 0);
+        //anim.SetBool("pulling", Pull() > 0);
     }
+}
 
     private void FixedUpdate(){
         if(canMove){
@@ -157,6 +170,37 @@ public class Walk_mechanic : MonoBehaviour
 
         }
 
+    }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collision is with a pushable object
+        if ( collision.gameObject.tag == "pushable")
+        {
+            touchingBox = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision){
+                if ( collision.gameObject.tag == "pushable")
+        {
+            touchingBox = false;
+        }
+    }
+
+    private float Pull()
+    {
+        if(touchingBox && rb.velocity.x < 0){
+            return 1;
+        }
+        else return 0;
+    }
+     private float Push()
+    {
+        if(touchingBox && rb.velocity.x > 0){
+            return 1;
+        }
+        else return 0;
     }
 
     void RespawnPlayer()
