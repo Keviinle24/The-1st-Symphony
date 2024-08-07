@@ -19,10 +19,10 @@ public class FallingPlatform : MonoBehaviour
         initialGravityScale = rb.gravityScale;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.gameObject.CompareTag("WholeNote"))
-        {
+        if (other.gameObject.CompareTag("player") || other.gameObject.CompareTag("HalfNote") || other.gameObject.CompareTag("WholeNote") || other.gameObject.CompareTag("EightNote") || other.gameObject.CompareTag("QuarterNote")) {
+        
             StartCoroutine(Fall());
         }
     }
@@ -32,7 +32,7 @@ public class FallingPlatform : MonoBehaviour
         yield return new WaitForSeconds(fallDelay);
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 5;
-        Destroy(gameObject, destroyDelay);
+       // Destroy(gameObject, destroyDelay);
     }
 
     public void ResetPlatform()
@@ -42,5 +42,13 @@ public class FallingPlatform : MonoBehaviour
         rb.gravityScale = initialGravityScale;
         rb.velocity = Vector2.zero; // Optional: Reset velocity if needed
         rb.angularVelocity = 0;    // Optional: Reset angular velocity if needed
+    }
+
+         private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("RespawnTrigger"))
+        {
+            ResetPlatform();
+        }
     }
 }
