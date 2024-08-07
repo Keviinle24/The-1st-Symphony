@@ -12,6 +12,21 @@ TagManager:
   - RespawnTrigger
   - EnterTrigger
   - ExitTrigger
+  - Ladder
+  - DialogueTrigger
+  - HalfNote
+  - WholeNote
+  - EightNote
+  - QuarterNote
+  - PortalTrigger
+  - PassThroughPlat
+  - Rope
+  - pushable
+  - Ground
+  - Wall
+  - player
+  - CheckPoint
+  - Drum
   layers:
   - Default
   - TransparentFX
@@ -21,7 +36,7 @@ TagManager:
   - UI
   - Trigger
   - GrabBox
-  - 
+  - Player
   - 
   - 
   - 
@@ -57,4 +72,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2969303523
+    locked: 0
+  - name: Foreground
+    uniqueID: 1454610735
     locked: 0
