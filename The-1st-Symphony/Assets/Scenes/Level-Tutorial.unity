@@ -7055,7 +7055,7 @@ PrefabInstance:
     - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: lights.Array.data[0]
       value: 
-      objectReference: {fileID: 2039803795}
+      objectReference: {fileID: 1822787098}
     - target: {fileID: 5013390349812303514, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: lights.Array.data[1]
       value: 
@@ -7568,7 +7568,7 @@ PrefabInstance:
     - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
       propertyPath: light
       value: 
-      objectReference: {fileID: 2039803795}
+      objectReference: {fileID: 0}
     - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
       propertyPath: lights.Array.size
       value: 2
@@ -7580,7 +7580,7 @@ PrefabInstance:
     - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
       propertyPath: lights.Array.data[0]
       value: 
-      objectReference: {fileID: 2039803795}
+      objectReference: {fileID: 1822787098}
     - target: {fileID: 5806557436948585848, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
       propertyPath: lights.Array.data[1]
       value: 
@@ -7638,6 +7638,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
+--- !u!1 &1822787098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 552184078382229416, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
+  m_PrefabInstance: {fileID: 1822787097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1846016166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9205,11 +9210,6 @@ SpriteRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4635769600765954777, guid: 07e0ceec28648884cbcccc8f84c87bed, type: 3}
   m_PrefabInstance: {fileID: 7864367188917474832}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2039803795 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1222490020141482104, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
-  m_PrefabInstance: {fileID: 1822787097}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2048139658 stripped
 GameObject:
