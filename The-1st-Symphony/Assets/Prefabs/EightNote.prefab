@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 4707492440756557345}
   - component: {fileID: 4237726896159746673}
   - component: {fileID: 4572545222475704566}
+  - component: {fileID: 1382830871294746272}
   m_Layer: 3
   m_Name: EightNote
   m_TagString: EightNote
@@ -388,6 +389,7 @@ MonoBehaviour:
   climbSpeed: 20
   jumpingPower: 30
   spawnPoint: {fileID: 0}
+  ropeVelocityGrabbed: {x: 0, y: 0}
   rb: {fileID: 8898101086217403716}
   GroundCheck: {fileID: 1114724270169347984}
   GroundCheck1: {fileID: 0}
@@ -571,6 +573,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderA: {fileID: 4707492440756557345}
   colliderB: {fileID: 4237726896159746673}
+--- !u!95 &1382830871294746272
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6449805583011000528}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 283a747c6b13db34d95f6ee96900e147, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7787949130651715750
 GameObject:
   m_ObjectHideFlags: 0

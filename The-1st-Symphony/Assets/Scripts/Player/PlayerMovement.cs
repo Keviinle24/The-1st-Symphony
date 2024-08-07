@@ -93,6 +93,7 @@ public class Walk_mechanic : MonoBehaviour
         anim.SetBool("falling", rb.velocity.y <= 0);
         anim.SetFloat("isJumping", rb.velocity.y);
         anim.SetFloat("isFalling", rb.velocity.y);
+        anim.SetBool("isGrounded", isGrounded());
         //anim.SetBool("pushing", Push() > 0);
         //anim.SetBool("pulling", Pull() > 0);
     }

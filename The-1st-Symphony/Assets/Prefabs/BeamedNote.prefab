@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 6920636678181480308}
   - component: {fileID: 2225094829092353492}
   - component: {fileID: 575264935132673957}
+  - component: {fileID: 1480437220041306593}
   m_Layer: 3
   m_Name: BeamedNote
   m_TagString: QuarterNote
@@ -314,6 +315,7 @@ MonoBehaviour:
   climbSpeed: 20
   jumpingPower: 30
   spawnPoint: {fileID: 0}
+  ropeVelocityGrabbed: {x: 0, y: 0}
   rb: {fileID: 297811329998893647}
   GroundCheck: {fileID: 3723581166688413592}
   GroundCheck1: {fileID: 3620268999844087361}
@@ -770,7 +772,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.6071777, y: -5.623104}
+  m_Offset: {x: -1.6071777, y: -11.556164}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -781,7 +783,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 24.051758, y: 25.321892}
+  m_Size: {x: 24.051758, y: 13.455772}
   m_EdgeRadius: 0
 --- !u!114 &575264935132673957
 MonoBehaviour:
@@ -797,6 +799,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderA: {fileID: 6920636678181480308}
   colliderB: {fileID: 2225094829092353492}
+--- !u!95 &1480437220041306593
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4617519354906132504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b23f59c631876644f8582621b33f41d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5064208463519780201
 GameObject:
   m_ObjectHideFlags: 0
