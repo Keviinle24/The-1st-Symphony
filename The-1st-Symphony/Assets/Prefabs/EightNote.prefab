@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 1475718314700416885}
   - component: {fileID: 6858430856146538490}
   - component: {fileID: 8351478026759901698}
-  - component: {fileID: 4707492440756557345}
+  - component: {fileID: 6135296111173012387}
   - component: {fileID: 4237726896159746673}
   - component: {fileID: 4572545222475704566}
   - component: {fileID: 1382830871294746272}
@@ -390,6 +390,7 @@ MonoBehaviour:
   jumpingPower: 30
   spawnPoint: {fileID: 0}
   ropeVelocityGrabbed: {x: 0, y: 0}
+  bounceTime: 1
   rb: {fileID: 8898101086217403716}
   GroundCheck: {fileID: 1114724270169347984}
   GroundCheck1: {fileID: 0}
@@ -449,8 +450,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
---- !u!68 &4707492440756557345
-EdgeCollider2D:
+--- !u!60 &6135296111173012387
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -482,38 +483,36 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 18, y: 18}
+    newSize: {x: 6.26, y: 5.03}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: -4.0983543, y: 7.058564}
-  - {x: -4.098354, y: 1.4096437}
-  - {x: 4.53302, y: 1.409644}
-  - {x: 4.53302, y: -8.846405}
-  - {x: -3.8279572, y: -8.846405}
-  - {x: -3.827957, y: -0.9747114}
-  - {x: -4.383148, y: -0.9580765}
-  - {x: -4.421507, y: 3.3503418}
-  - {x: -4.4318924, y: 5.9789352}
-  - {x: -4.9812107, y: 5.557064}
-  - {x: -5.6340027, y: 4.8659325}
-  - {x: -6.108303, y: 4.1426315}
-  - {x: -6.216408, y: 3.3225517}
-  - {x: -6.050005, y: 2.6753006}
-  - {x: -5.7556763, y: 2.1252403}
-  - {x: -5.2119484, y: 1.5780907}
-  - {x: -5.310314, y: 1.4267731}
-  - {x: -5.8817596, y: 1.8994675}
-  - {x: -6.5940704, y: 2.8059692}
-  - {x: -6.851549, y: 3.7533646}
-  - {x: -6.5218563, y: 4.7929535}
-  - {x: -5.649742, y: 5.5997925}
-  - {x: -4.6925774, y: 6.3909187}
-  - {x: -4.519823, y: 6.7165413}
-  - {x: -4.500496, y: 7.0644016}
-  - {x: -4.1208286, y: 7.0809317}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+    m_Paths:
+    - - {x: 4.5488605, y: 1.403851}
+      - {x: -4.0878477, y: 1.4038509}
+      - {x: -4.087909, y: 7.078888}
+      - {x: -4.5213428, y: 7.078888}
+      - {x: -4.520996, y: 6.717926}
+      - {x: -4.671753, y: 6.3933105}
+      - {x: -6.5109253, y: 4.730713}
+      - {x: -6.8082275, y: 3.5560455}
+      - {x: -6.411377, y: 2.532257}
+      - {x: -5.32666, y: 1.4789276}
+      - {x: -5.2298584, y: 1.5901184}
+      - {x: -6.2235107, y: 2.9786835}
+      - {x: -5.981262, y: 4.5005646}
+      - {x: -4.432373, y: 6.01}
+      - {x: -4.432373, y: -0.9979858}
+      - {x: -3.841919, y: -0.99798584}
+      - {x: -3.841919, y: -8.839983}
+      - {x: 4.548861, y: -8.839983}
+  m_UseDelaunayMesh: 0
 --- !u!61 &4237726896159746673
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -571,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826b310d4abc58a45a03a5112c66395f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderA: {fileID: 4707492440756557345}
+  colliderA: {fileID: 6135296111173012387}
   colliderB: {fileID: 4237726896159746673}
 --- !u!95 &1382830871294746272
 Animator:
