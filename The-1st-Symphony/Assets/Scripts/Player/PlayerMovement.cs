@@ -26,6 +26,10 @@ public class Walk_mechanic : MonoBehaviour
 
    private bool touchingBox;
     private Animator anim;
+        private bool isBusy = false;
+            [SerializeField] private float bounceTime = 1f;
+
+
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform GroundCheck;
@@ -44,16 +48,43 @@ public class Walk_mechanic : MonoBehaviour
         originalJumpingPower = jumpingPower;
         originalClimbSpeed = climbSpeed;
                 anim = GetComponent<Animator>();
+                        EventManager.OnBouncePadHit += OnBouncePadHit;
 
+
+    }
+
+    
+    private void OnDestroy() {
+        EventManager.OnBouncePadHit -= OnBouncePadHit;
+       
+    }
+
+    private void OnBouncePadHit(string tag, BouncePad bp) {
+        if (gameObject.CompareTag(tag)) {
+            StartCoroutine(BounceRoutine(bp));
+        }
+    }
+
+ 
+
+    private IEnumerator BounceRoutine(BouncePad bp) {
+        isBusy = true;
+        rb.AddForce(bp.Directions * bp.Bounce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(bounceTime);
+        isBusy = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+                if (isBusy) return;
+                        
+
+
         if (canMove){
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
+rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
      if(Input.GetButtonDown("Jump") && isGrounded())
      {
         rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
@@ -101,7 +132,7 @@ public class Walk_mechanic : MonoBehaviour
 
     private void FixedUpdate(){
         if(canMove){
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
         if(isClimbing)
         {
@@ -230,6 +261,11 @@ public class Walk_mechanic : MonoBehaviour
     public void SetMovementEnabled(bool isEnabled)
     {
         canMove = isEnabled;
+    }
+
+    public void SetSpawnPoint(Transform NewSpawn)
+    {
+        spawnPoint = NewSpawn;
     }
 
     public void ChangeSpeed( float NewSpeed, float NewJump, float NewClimb)
