@@ -78,11 +78,13 @@ public class Walk_mechanic : MonoBehaviour
     void Update()
     {
                 if (isBusy) return;
+                        
+
 
         if (canMove){
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
+rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
      if(Input.GetButtonDown("Jump") && isGrounded())
      {
         rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
@@ -130,7 +132,7 @@ public class Walk_mechanic : MonoBehaviour
 
     private void FixedUpdate(){
         if(canMove){
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
         if(isClimbing)
         {
