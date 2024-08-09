@@ -20,6 +20,7 @@ public class CharacterSwap : MonoBehaviour
         {
             characters[i].SetActive(true);
             characters[i].GetComponent<Walk_mechanic>().SetMovementEnabled(false);
+            characters[i].GetComponent<GrabController>().SetGrabEnabled(false);
 
             cameras[i].gameObject.SetActive(false);
             lights[i].gameObject.SetActive(false);
@@ -51,6 +52,7 @@ public class CharacterSwap : MonoBehaviour
     {
         //deactivate the current active character
         characters[activeCharacterIndex].GetComponent<Walk_mechanic>().SetMovementEnabled(false);
+        characters[activeCharacterIndex].GetComponent<GrabController>().SetGrabEnabled(false);
         cameras[activeCharacterIndex].gameObject.SetActive(false);
         lights[activeCharacterIndex].gameObject.SetActive(false);
 
@@ -63,6 +65,8 @@ public class CharacterSwap : MonoBehaviour
         Debug.Log("" + activeCharacterIndex);
         SetActiveCharacter(activeCharacterIndex);
         characters[activeCharacterIndex].GetComponent<Walk_mechanic>().SetMovementEnabled(true);
+        characters[activeCharacterIndex].GetComponent<GrabController>().SetGrabEnabled(true);
+
 
     }
 
@@ -100,6 +104,8 @@ public class CharacterSwap : MonoBehaviour
 
         characters[characters.Length - 1].SetActive(true);
         characters[characters.Length - 1].GetComponent<Walk_mechanic>().SetMovementEnabled(false);
+        characters[activeCharacterIndex].GetComponent<GrabController>().SetGrabEnabled(false);
+
 
 
     if (characters.Length == 1)

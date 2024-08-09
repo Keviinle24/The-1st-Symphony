@@ -10,11 +10,13 @@ public class GrabController : MonoBehaviour
     public float rayDist;
     public bool isHolding = false;
     public bool controllerT = false;
+    private bool canGrab = true;
 
     void Update()
     {
+        
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);
-
+    if (canGrab){
         if(grabCheck.collider != null && grabCheck.collider.tag == "box")
         {
             if((Input.GetKeyDown(KeyCode.E) || Input.GetAxisRaw("right trigger") > 0f) && !isHolding)
@@ -29,14 +31,22 @@ public class GrabController : MonoBehaviour
                 controllerT = true;
             }
         }
-             if((isHolding && Input.GetKeyUp(KeyCode.E)) || (isHolding && controllerT && Input.GetAxisRaw("right trigger") == 0f))
+             if((isHolding && Input.GetKeyUp(KeyCode.E)) || (isHolding && controllerT && Input.GetAxisRaw("right trigger") == 0f) || !canGrab)
+            {
+                if (grabCheck.collider != null)
             {
                 isHolding = false;
                 controllerT = false;
                 grabCheck.collider.gameObject.transform.parent = originalParent;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;  
-                
-            }
+            }   
+            }}
         
+        
+    }
+
+        public void SetGrabEnabled(bool isEnabled)
+    {
+        canGrab = isEnabled;
     }
 }

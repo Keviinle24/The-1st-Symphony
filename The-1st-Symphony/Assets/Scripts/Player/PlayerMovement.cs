@@ -213,12 +213,12 @@ rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision){
-                if ( collision.gameObject.tag == "pushable")
-        {
-            touchingBox = false;
-        }
-    }
+    // private void OnCollisionExit2D(Collision2D collision){
+    //             if ( collision.gameObject.tag == "pushable")
+    //     {
+    //         touchingBox = false;
+    //     }
+    // }
 
     private float Pull()
     {

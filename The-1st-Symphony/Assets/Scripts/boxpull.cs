@@ -12,7 +12,7 @@ public class boxpull : MonoBehaviour {
  
     private void Update () {
   float horizontalInput = Input.GetAxis("Horizontal");
-     rb.gravityScale = 80;
+    // rb.gravityScale = 80;
             if (beingPushed == false) {
                 rb.mass = immovableMass; // Set mass to imovableMass when not being pushed.
                 
@@ -22,7 +22,7 @@ public class boxpull : MonoBehaviour {
                 rb.mass = defaultMass; // Set mass to defaultMass when being pushed.
                 // rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = Vector3.zero;
-              
+
                 //GetComponent<Rigidbody2D>().isKinematic = false; 
 			
             }
