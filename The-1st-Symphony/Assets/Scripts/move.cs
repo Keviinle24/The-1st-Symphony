@@ -19,8 +19,13 @@ public class move : MonoBehaviour
     private bool isBusy = false;
     private PlatformController currentPlatform;
     private Vector2 velocityToAdd;
+  private bool swinging = false;
+
+    private Transform currentSwingable;
+    public Vector2 ropeVelocityGrabbed;
 
 
+    public Transform spawnPoint;
     // Called when the script instance is being loaded
     private void Awake()
     {
@@ -58,11 +63,8 @@ public class move : MonoBehaviour
         isBusy = false;
     }
 
-
-    // Called once per frame
-    private void FixedUpdate()
-    {
-        if (isBusy) return;
+private void Update() {
+    if (isBusy) return;
         
         // Get horizontal input (A/D keys or Left/Right arrow keys)
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -114,8 +116,14 @@ public class move : MonoBehaviour
             body.velocity = new Vector2(horizontalInput, body.velocity.y * 0.5f); // Adjust descent speed
             isJumping = false; // End jump state 
         }
+              anim.SetBool("walk", horizontalInput != 0);
+}
+    // Called once per frame
+    private void FixedUpdate()
+    {
+        
         // Set the walk animation based on horizontal input
-        anim.SetBool("walk", horizontalInput != 0);
+  
         // anim.SetBool("jump, body.velocity.y > 0");
         // anim.SetBool("falling, body.velocity.y <= 0");
         transform.position += (Vector3)velocityToAdd;
@@ -181,6 +189,34 @@ public class move : MonoBehaviour
             isTouchingWall = false;
         }
     }
+
+private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("RespawnTrigger"))
+        {
+            RespawnPlayer();
+        }
+ 
+        if (collision.CompareTag("Rope")){
+        Rigidbody2D ropeRigidbody = collision.GetComponent<Rigidbody2D>();
+        
+        if (ropeRigidbody != null)
+        {            
+            ropeRigidbody.velocity = ropeVelocityGrabbed;
+            swinging = true;
+            currentSwingable = collision.transform;
+        }
+        }
+    }
+
+
+    void RespawnPlayer()
+    {
+        transform.position = spawnPoint.position;
+        body.velocity = Vector2.zero;
+        body.angularVelocity = 0f;
+    }
+
 
     private void OnPlatformTick(Vector2 vel) {
         velocityToAdd = vel;

@@ -9,7 +9,7 @@ public class ButtonPath : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     { 
 
-        if (other.CompareTag("player") || other.CompareTag("pushable")) //add player tag if needed
+        if (other.CompareTag(" ") || other.CompareTag("pushable")) //add player tag if needed
         {
             path.SetActive(true);
         }
@@ -18,7 +18,7 @@ public class ButtonPath : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
 
-        if (other.CompareTag("player") || other.CompareTag("pushable"))
+        if (other.CompareTag(" ") || other.CompareTag("pushable"))
         {
             path.SetActive(false);
         }

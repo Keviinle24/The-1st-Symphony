@@ -30,7 +30,7 @@ public class playerpush : MonoBehaviour {
           
             if (Input.GetButtonDown("Jump"))
             {
-                 rb.velocity = new Vector2(horizontalInput * 200, rb.velocity.y * 25);
+                 rb.velocity = new Vector2(horizontalInput * 500, rb.velocity.y * 25);
                  
             }
             // Connects the box's FixedJoint2D to the player's Rigidbody2D, so they move together.
