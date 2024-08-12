@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlatformController : MonoBehaviour
 {
-   
     [SerializeField] private string myId;
     [SerializeField] private Vector3 offset = new Vector3(0, -150, 0);
     [SerializeField] private float fullDuration = 6f;
@@ -15,7 +14,8 @@ public class PlatformController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isPlayerOn;
     private Vector2 previousPosition;
-    
+    private Transform playerTransform;
+
     private void Awake() {
         startPosition = transform.position;
         targetPosition = startPosition + offset; 
@@ -32,8 +32,10 @@ public class PlatformController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if (isPlayerOn) {
-            EventManager.TickVelocity((Vector2)transform.position - previousPosition);
+        if (isPlayerOn && playerTransform != null) {
+            Vector2 deltaPosition = (Vector2)transform.position - previousPosition;
+            playerTransform.position += new Vector3(deltaPosition.x, deltaPosition.y, 0); // Move player along with platform
+            EventManager.TickVelocity(deltaPosition);
         }
         previousPosition = transform.position;
     }
@@ -44,17 +46,12 @@ public class PlatformController : MonoBehaviour
                 StopCoroutine(moveRoutine);
                 moveRoutine = null;
             }
-            if (active) {
-                moveRoutine = StartCoroutine(MoveToTarget());
-            } else {
-                moveRoutine = StartCoroutine(MoveToHome());
-            }
+            elapsedTime = active ? 0f : fullDuration;
+            moveRoutine = active ? StartCoroutine(MoveToTarget()) : StartCoroutine(MoveToHome());
         }
     }
 
-
     private IEnumerator MoveToTarget() {
-
         while (elapsedTime < fullDuration) {
             rb.MovePosition(Vector3.Lerp(startPosition, targetPosition, elapsedTime / fullDuration));
             elapsedTime += Time.deltaTime;
@@ -67,25 +64,26 @@ public class PlatformController : MonoBehaviour
     private IEnumerator MoveToHome() { 
         yield return new WaitForSeconds(returnDelay);
         while (elapsedTime > 0) {
-             rb.MovePosition(Vector3.Lerp(startPosition, targetPosition, elapsedTime / fullDuration));
+            rb.MovePosition(Vector3.Lerp(targetPosition, startPosition, 1f - (elapsedTime / fullDuration)));
             elapsedTime -= Time.deltaTime;
             yield return null;
         }
-         rb.MovePosition(startPosition);
+        rb.MovePosition(startPosition);
         moveRoutine = null;
     }
 
     private void OnPlayerEnteredPlatform(PlatformController pc) {
         if (pc == this) {
+            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;  
             previousPosition = transform.position;
             isPlayerOn = true;
- 
         }
     }
 
-        private void OnPlayerExitedPlatform(PlatformController pc) {
+    private void OnPlayerExitedPlatform(PlatformController pc) {
         if (pc == this) {
             isPlayerOn = false;
+            playerTransform = null;
         }
     }
 }

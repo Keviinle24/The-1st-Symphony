@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class move : MonoBehaviour
+public class move2 : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpingPower;
@@ -116,14 +116,7 @@ private void Update() {
             body.velocity = new Vector2(horizontalInput, body.velocity.y * 0.5f); // Adjust descent speed
             isJumping = false; // End jump state 
         }
-        if (gameObject.tag == "player") {
-             
-            //   anim.SetBool("jump", !grounded);
-               anim.SetBool("walk", horizontalInput != 0 && grounded);
-        }
-    if (gameObject.tag == "HalfNote") {
               anim.SetBool("halfnotewalk", horizontalInput != 0);
-    }
 }
 }
     // Called once per frame
