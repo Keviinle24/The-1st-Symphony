@@ -29,7 +29,7 @@ public class GrabController : MonoBehaviour
                 controllerT = true;
             }
         }
-             if((isHolding && Input.GetKeyUp(KeyCode.E)) || (isHolding && controllerT && Input.GetAxisRaw("right trigger") == 0f))
+             if((isHolding && Input.GetKeyDown(KeyCode.E)) || (isHolding && controllerT && Input.GetAxisRaw("right trigger") == 0f))
             {
                 isHolding = false;
                 controllerT = false;

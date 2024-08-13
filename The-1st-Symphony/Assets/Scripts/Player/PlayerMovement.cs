@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Walk_mechanic : MonoBehaviour
 {
+    private bool isTouchingWall;
     private float horizontal;
     private float vertical;
     public float speed = 15f;
@@ -107,6 +108,10 @@ rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
             StartCoroutine(IsClimbingBuffer());
         }
         
+        if (isTouchingWall && horizontal != 0)
+        {
+            rb.velocity = new Vector2(horizontal, rb.velocity.y - 0.5f);
+        }
 
         if (swinging == true){
         
@@ -211,12 +216,22 @@ rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         {
             touchingBox = true;
         }
+               if (collision.gameObject.tag == "Wall")
+        {
+           
+            isTouchingWall = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision){
                 if ( collision.gameObject.tag == "pushable")
         {
             touchingBox = false;
+        }
+        if (collision.gameObject.tag == "Wall")
+        {
+            // Set isTouchingWall to false
+            isTouchingWall = false;
         }
     }
 
