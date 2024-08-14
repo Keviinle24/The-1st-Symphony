@@ -1991,6 +1991,7 @@ GameObject:
   - component: {fileID: 405788322}
   - component: {fileID: 405788321}
   - component: {fileID: 405788325}
+  - component: {fileID: 405788326}
   m_Layer: 0
   m_Name: SheetMusic 1
   m_TagString: Untagged
@@ -2146,6 +2147,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioplayers:
   - {fileID: 790993856}
+--- !u!114 &405788326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405788320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd70f07797946a8479e788dcbd1b5244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yourText:
+  - {fileID: 516518506}
 --- !u!1 &407825028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6798895415857518008, guid: b8cbc2d8254c083458f272cadace067b, type: 3}
@@ -2390,6 +2405,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4631415806391501965, guid: b8cbc2d8254c083458f272cadace067b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d0fe45aec0960564e8243c83276f1015, type: 2}
     - target: {fileID: 6798895415857518008, guid: b8cbc2d8254c083458f272cadace067b, type: 3}
       propertyPath: m_Name
       value: StartPlatform (3)
@@ -4715,7 +4734,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2642336879439988736, guid: fc5f40da4940655459625a5fe530368d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1333030633}
+      addedObject: {fileID: 1333030637}
   m_SourcePrefab: {fileID: 100100000, guid: fc5f40da4940655459625a5fe530368d, type: 3}
 --- !u!1 &872137497 stripped
 GameObject:
@@ -5162,6 +5181,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015660359}
   m_CullTransparentMesh: 1
+--- !u!1 &1035994959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1035994961}
+  - component: {fileID: 1035994960}
+  m_Layer: 2
+  m_Name: RespawnTrigger (2)
+  m_TagString: RespawnTriggerBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1035994960
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035994959}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &1035994961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035994959}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.5, y: -89.9, z: 3500.5833}
+  m_LocalScale: {x: 150, y: 5, z: 70}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089357434
 GameObject:
   m_ObjectHideFlags: 0
@@ -6543,7 +6639,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4311663269637840050, guid: fc5f40da4940655459625a5fe530368d, type: 3}
   m_PrefabInstance: {fileID: 858344664}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1333030633
+--- !u!114 &1333030637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6552,7 +6648,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1333030628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0675b555ab5fadd41a13af501a84a14e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c3a7ae8962ac1045b4485f7b022e87a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 686558555}
@@ -8253,6 +8349,18 @@ PrefabInstance:
       propertyPath: characters.Array.data[0]
       value: 
       objectReference: {fileID: 1603859909}
+    - target: {fileID: 5141338932237541372, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5239048250653350994, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+      propertyPath: speed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5239048250653350994, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
+      propertyPath: climbSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5239048250653350994, guid: 7457dfc6b3188e04292353ef1f9dce27, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -8738,6 +8846,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: WholeNote
       objectReference: {fileID: 0}
+    - target: {fileID: 2403422024913568587, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030540032075085764, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
+      propertyPath: speed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030540032075085764, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
+      propertyPath: climbSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5030540032075085764, guid: b1d5d5376b3f9d04ba8be3615b8a264c, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -8871,6 +8991,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4631415806391501965, guid: b8cbc2d8254c083458f272cadace067b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d0fe45aec0960564e8243c83276f1015, type: 2}
     - target: {fileID: 6798895415857518008, guid: b8cbc2d8254c083458f272cadace067b, type: 3}
       propertyPath: m_Name
       value: StartPlatform (5)
@@ -11237,5 +11361,6 @@ SceneRoots:
   - {fileID: 1898596350}
   - {fileID: 1415833660}
   - {fileID: 1246875202}
+  - {fileID: 1035994961}
   - {fileID: 1947132563}
   - {fileID: 1474552319}
