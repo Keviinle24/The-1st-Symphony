@@ -27,6 +27,7 @@ TagManager:
   - player
   - CheckPoint
   - Drum
+  - RespawnTriggerBox
   layers:
   - Default
   - TransparentFX

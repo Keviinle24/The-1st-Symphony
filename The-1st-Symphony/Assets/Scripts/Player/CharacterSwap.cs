@@ -8,6 +8,7 @@ public class CharacterSwap : MonoBehaviour
     public GameObject[] characters; 
     public Camera[] cameras; 
     public GameObject[] lights;
+    public bool canSwap = true;
 
     private int activeCharacterIndex = 0; 
     
@@ -50,6 +51,7 @@ public class CharacterSwap : MonoBehaviour
 
     void SwitchCharacter(int direction = 1)
     {
+        if (canSwap){
         //deactivate the current active character
         characters[activeCharacterIndex].GetComponent<Walk_mechanic>().SetMovementEnabled(false);
         characters[activeCharacterIndex].GetComponent<GrabController>().SetGrabEnabled(false);
@@ -66,7 +68,7 @@ public class CharacterSwap : MonoBehaviour
         SetActiveCharacter(activeCharacterIndex);
         characters[activeCharacterIndex].GetComponent<Walk_mechanic>().SetMovementEnabled(true);
         characters[activeCharacterIndex].GetComponent<GrabController>().SetGrabEnabled(true);
-
+        }
 
     }
 
@@ -112,5 +114,10 @@ public class CharacterSwap : MonoBehaviour
     {
         SetActiveCharacter(0);
     }
+    }
+
+    public void SetSwapEnabled(bool isEnabled)
+    {
+        canSwap = isEnabled;
     }
 }

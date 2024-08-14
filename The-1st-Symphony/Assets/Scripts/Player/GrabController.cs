@@ -49,4 +49,15 @@ public class GrabController : MonoBehaviour
     {
         canGrab = isEnabled;
     }
+    
+    void OnDrawGizmos()
+    {
+        if (grabDetect != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(grabDetect.position, grabDetect.position + Vector3.right * rayDist);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(grabDetect.position + Vector3.right * rayDist, 0.1f);
+        }
+    }
 }
