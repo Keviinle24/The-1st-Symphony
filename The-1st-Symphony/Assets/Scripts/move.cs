@@ -9,7 +9,7 @@ public class move : MonoBehaviour
     private Rigidbody2D body;
     private Animator anim;
     private bool isJumping;  
- 
+  private bool canMove = true;
     private bool grounded;
     // Counter for the number of jumps (for double jump)
     private int jumpCount;
@@ -17,7 +17,15 @@ public class move : MonoBehaviour
     // Boolean to check if the character is touching a wall
     private bool isTouchingWall;
     private bool isBusy = false;
+    private PlatformController currentPlatform;
+    private Vector2 velocityToAdd;
+  private bool swinging = false;
 
+    private Transform currentSwingable;
+    public Vector2 ropeVelocityGrabbed;
+
+
+    public Transform spawnPoint;
     // Called when the script instance is being loaded
     private void Awake()
     {
@@ -31,12 +39,13 @@ public class move : MonoBehaviour
         body.interpolation = RigidbodyInterpolation2D.Interpolate;
 
         EventManager.OnBouncePadHit += OnBouncePadHit;
+        EventManager.OnTickVelocity += OnPlatformTick;
   
     }
 
     private void OnDestroy() {
         EventManager.OnBouncePadHit -= OnBouncePadHit;
-       
+        EventManager.OnTickVelocity -= OnPlatformTick;
     }
 
     private void OnBouncePadHit(string tag, BouncePad bp) {
@@ -54,12 +63,9 @@ public class move : MonoBehaviour
         isBusy = false;
     }
 
-
-    // Called once per frame
-    private void Update()
-    {
-        if (isBusy) return;
-        
+private void Update() {
+    if (isBusy) return;
+        if (canMove) {
         // Get horizontal input (A/D keys or Left/Right arrow keys)
         float horizontalInput = Input.GetAxis("Horizontal");
 
@@ -90,7 +96,7 @@ public class move : MonoBehaviour
                 isJumping = true;  
             }
         }
-
+        
 
         // Apply downward velocity if touching a wall and moving forward while in the air
         if (isTouchingWall && !grounded && horizontalInput != 0)
@@ -110,12 +116,25 @@ public class move : MonoBehaviour
             body.velocity = new Vector2(horizontalInput, body.velocity.y * 0.5f); // Adjust descent speed
             isJumping = false; // End jump state 
         }
+        if (gameObject.tag == "player") {
+             
+            //   anim.SetBool("jump", !grounded);
+               anim.SetBool("walk", horizontalInput != 0 && grounded);
+        }
+    if (gameObject.tag == "HalfNote") {
+              anim.SetBool("halfnotewalk", horizontalInput != 0);
+    }
+}
+}
+    // Called once per frame
+    private void FixedUpdate()
+    {
+        
         // Set the walk animation based on horizontal input
-        anim.SetBool("walk", horizontalInput != 0);
-        anim.SetBool("jumping", body.velocity.y > 0);
-        anim.SetBool("falling", body.velocity.y <= 0);
-        anim.SetFloat("isJumping", body.velocity.y);
-        anim.SetFloat("isFalling", body.velocity.y);
+  
+        // anim.SetBool("jump, body.velocity.y > 0");
+        // anim.SetBool("falling, body.velocity.y <= 0");
+        transform.position += (Vector3)velocityToAdd;
  
     }
 
@@ -124,12 +143,23 @@ public class move : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the collision is with the ground or a pushable object
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "pushable")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "pushable" || collision.gameObject.tag == "player" ||   collision.gameObject.tag == "HalfNote")
         {
             grounded = true;
             jumpCount = 0;
             isJumping = false; 
         }
+
+        if (collision.gameObject.tag == "platform") {
+            grounded = true;
+            jumpCount = 0;
+            isJumping = false; 
+            currentPlatform = collision.gameObject.GetComponent<PlatformController>();
+            if (currentPlatform != null) {
+                EventManager.EnteredPlatform(currentPlatform);
+            }
+        }
+
 
         // Check if the collision is with a wall
         if (collision.gameObject.tag == "Wall")
@@ -149,11 +179,59 @@ public class move : MonoBehaviour
             grounded = false;
         }
 
+        if (collision.gameObject.tag == "platform") {
+            grounded = false;
+
+             if (currentPlatform != null) {
+
+                EventManager.ExitedPlatform(currentPlatform);
+                currentPlatform = null;
+                velocityToAdd = Vector2.zero;
+            }
+        }
+
         // Check if the collision was with a wall
         if (collision.gameObject.tag == "Wall")
         {
             // Set isTouchingWall to false
             isTouchingWall = false;
         }
+    }
+  public void SetMovementEnabled(bool isEnabled)
+    {
+        canMove = isEnabled;
+    }
+
+private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("RespawnTrigger"))
+        {
+            RespawnPlayer();
+        }
+ 
+        if (collision.CompareTag("Rope")){
+        Rigidbody2D ropeRigidbody = collision.GetComponent<Rigidbody2D>();
+        
+        if (ropeRigidbody != null)
+        {            
+            ropeRigidbody.velocity = ropeVelocityGrabbed;
+            swinging = true;
+            currentSwingable = collision.transform;
+        }
+        }
+    }
+
+
+    void RespawnPlayer()
+    {
+        transform.position = spawnPoint.position;
+        body.velocity = Vector2.zero;
+        body.angularVelocity = 0f;
+    }
+
+
+    private void OnPlatformTick(Vector2 vel) {
+        velocityToAdd = vel;
+      
     }
 }

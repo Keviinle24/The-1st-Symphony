@@ -8,48 +8,38 @@ public class playerpush : MonoBehaviour {
     private Rigidbody2D rb;
     GameObject box; // Variable to store the reference to the pushable box.
 
-    public bool controllerT = false;
-
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
     // Update is called once per frame
     void Update () {
         float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
 
         Physics2D.queriesStartInColliders = false; //When set to false, the raycast will ignore the collider it starts from. Make sure to not mark player in boxMask as well
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance, boxMask); 
         // Casts a ray from the player's position to the right, filtered by the boxMask, up to the specified distance.
 
-        if (hit.collider != null && hit.collider.gameObject.tag == "pushable")  
-        if (Input.GetKeyDown(KeyCode.E) ||  (Input.GetAxisRaw("right trigger") > 0f)) {
+        if (hit.collider != null && hit.collider.gameObject.tag == "pushable" && Input.GetKey(KeyCode.E)) {
             // Checks if the raycast hit something, if that something has the tag "pushable", and if the "E" key is being pressed.
 
             box = hit.collider.gameObject; // Stores the reference to the hit pushable box.
             box.GetComponent<FixedJoint2D>().enabled = true;  
             box.GetComponent<boxpull>().beingPushed = true;  
             box.GetComponent<FixedJoint2D>().connectedBody = rb; 
-            rb.velocity = new Vector2(horizontalInput * 20, rb.velocity.y);
+            rb.velocity = new Vector2(horizontalInput * 200, rb.velocity.y);
           
             if (Input.GetButtonDown("Jump"))
             {
-                 rb.velocity = new Vector2(horizontalInput * 20, rb.velocity.y * 25);
+                 rb.velocity = new Vector2(horizontalInput * 500, rb.velocity.y * 25);
                  
             }
             // Connects the box's FixedJoint2D to the player's Rigidbody2D, so they move together.
-
-                if(Input.GetAxisRaw("right trigger") > 0f)
-            {
-                controllerT = true;
-            }
             
-        } else if (Input.GetKeyUp(KeyCode.E) || (controllerT && Input.GetAxisRaw("right trigger") == 0f)) {
+        } else if (Input.GetKeyUp(KeyCode.E)) {
             // Checks if the "E" key was released.
 
             box.GetComponent<FixedJoint2D>().enabled = false; // Disables the FixedJoint2D component on the box.
             box.GetComponent<boxpull>().beingPushed = false; // Sets the beingPushed property of the boxpull script to false.
-            controllerT = false;
         }
     }
 
