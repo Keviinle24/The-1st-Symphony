@@ -262,6 +262,11 @@ rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     {
         canMove = isEnabled;
     }
+    public bool IsMovementEnabled()
+    {
+        Debug.Log("can move? " + canMove);
+        return canMove;
+    }
 
     public void SetSpawnPoint(Transform NewSpawn)
     {

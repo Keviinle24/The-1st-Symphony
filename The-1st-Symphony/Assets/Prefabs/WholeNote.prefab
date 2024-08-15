@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 552184078382229416}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,6 +250,7 @@ MonoBehaviour:
   jumpingPower: 30
   spawnPoint: {fileID: 0}
   ropeVelocityGrabbed: {x: 0, y: 0}
+  bounceTime: 1
   rb: {fileID: 2332956760120872043}
   GroundCheck: {fileID: 2706052232611241203}
   GroundCheck1: {fileID: 0}
@@ -296,6 +297,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   lights: []
+  canSwap: 1
 --- !u!114 &5285533639089735586
 MonoBehaviour:
   m_ObjectHideFlags: 0
