@@ -10,7 +10,8 @@ public class GrabController : MonoBehaviour
     public float rayDist;
     public bool isHolding = false;
     public bool controllerT = false;
-    private bool canGrab = true;
+    public bool canGrab = true;
+    public bool inRange = false;
 
     void Update()
     {
@@ -19,6 +20,7 @@ public class GrabController : MonoBehaviour
     if (canGrab){
         if(grabCheck.collider != null && grabCheck.collider.tag == "box")
         {
+            inRange = true;
             if((Input.GetKeyDown(KeyCode.E) || Input.GetAxisRaw("right trigger") > 0f) && !isHolding)
             {
                 isHolding = true;
@@ -31,6 +33,10 @@ public class GrabController : MonoBehaviour
                 controllerT = true;
             }
         }
+        else
+        {
+            inRange = false;
+        }
              if((isHolding && Input.GetKeyUp(KeyCode.E)) || (isHolding && controllerT && Input.GetAxisRaw("right trigger") == 0f) || !canGrab)
             {
                 if (grabCheck.collider != null)
@@ -41,8 +47,7 @@ public class GrabController : MonoBehaviour
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;  
             }   
             }}
-        
-        
+
     }
 
         public void SetGrabEnabled(bool isEnabled)

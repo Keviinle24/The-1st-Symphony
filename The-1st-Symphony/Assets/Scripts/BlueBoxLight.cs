@@ -4,36 +4,67 @@ using UnityEngine;
 
 public class BlueBoxLight : MonoBehaviour
 {       
-    public Transform[] PlayerGrabTransforms; // Array of player grab transforms
     public GameObject lightToActivate;  // Reference to the light to activate
-    public float activationRange = 5f; // Range within which the light activates
+     public GameObject[] Players; // Array of Player GameObjects
+    private GrabController[] playerDetectionScripts; // Array of GrabController scripts
+
+    private void Start()
+    {
+        if (Players != null && Players.Length > 0)
+        {
+            // Initialize the playerDetectionScripts array
+            playerDetectionScripts = new GrabController[Players.Length];
+
+            for (int i = 0; i < Players.Length; i++)
+            {
+                if (Players[i] != null)
+                {
+                    playerDetectionScripts[i] = Players[i].GetComponent<GrabController>();
+
+                    if (playerDetectionScripts[i] == null)
+                    {
+                        Debug.LogError($"GrabController script not found on Player GameObject at index {i}.");
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"Player GameObject at index {i} is not assigned.");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Players array is not assigned or is empty.");
+        }
+    }
 
     private void Update()
     {
-        bool isAnyInRange = false; // Flag to track if any player grab transform is in range
-
-        // Iterate through each player grab transform
-        for (int i = 0; i < PlayerGrabTransforms.Length; i++)
+        if (playerDetectionScripts == null || playerDetectionScripts.Length == 0)
         {
-            if (PlayerGrabTransforms[i] == null)
-            {
-                Debug.LogWarning("PlayerGrabTransforms element at index " + i + " is not assigned.");
-                continue;
-            }
+            Debug.LogWarning("GrabController scripts are not assigned.");
+            return;
+        }
 
-            // Calculate the distance between this GameObject and the current player grab transform
-            float distance = Vector3.Distance(transform.position, PlayerGrabTransforms[i].position);
-
-            // Check if the distance is within the activation range
-            if (distance <= activationRange)
+        // Check if any player has inRange set to true
+        bool anyInRange = false;
+        foreach (GrabController script in playerDetectionScripts)
+        {
+            if (script != null && script.inRange)
             {
-                isAnyInRange = true; // Set flag if any transform is in range
-                break; // Exit loop early if we found one in range
+                anyInRange = true;
+                break; // No need to check further if we already found one player in range
             }
         }
 
         // Activate or deactivate the light based on the flag
-        lightToActivate.SetActive(isAnyInRange);
+        if (lightToActivate != null)
+        {
+            lightToActivate.SetActive(anyInRange);
+        }
+        else
+        {
+            Debug.LogWarning("Light GameObject is not assigned.");
+        }
     }
 }
-
