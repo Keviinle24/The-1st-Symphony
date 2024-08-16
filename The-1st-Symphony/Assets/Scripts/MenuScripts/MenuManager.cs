@@ -9,6 +9,8 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private GameObject _mainMenuCanvasGO;
     [SerializeField] private GameObject _settingsMenuCanvasGO;
+    [SerializeField] private GameObject _ControlsMenuCanvasGO;
+
 
    // [SerializeField] private Player _player;
     [SerializeField] private Walk_mechanic _playerAttack;
@@ -17,12 +19,17 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _mainMenuFirst;
     [SerializeField] private GameObject _settingsMenuFirst;
 
+    [SerializeField] private GameObject _ControlsMenuFirst;
+
     private bool isPaused;
 
     private void Start()
     {
         _mainMenuCanvasGO.SetActive(false);
         _settingsMenuCanvasGO.SetActive(false);
+        _ControlsMenuCanvasGO.SetActive(false);
+
+        
     }
 
     private void Update()
@@ -74,6 +81,7 @@ public class MenuManager : MonoBehaviour
     {
         _mainMenuCanvasGO.SetActive(true);
         _settingsMenuCanvasGO.SetActive(false);
+        _ControlsMenuCanvasGO.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
 
@@ -83,8 +91,19 @@ public class MenuManager : MonoBehaviour
     {
         _settingsMenuCanvasGO.SetActive(true);
         _mainMenuCanvasGO.SetActive(false);
+        _ControlsMenuCanvasGO.SetActive(false);
+
 
         EventSystem.current.SetSelectedGameObject(_settingsMenuFirst);
+    }
+
+    private void OpenControlsMenuHandle()
+    {
+        _settingsMenuCanvasGO.SetActive(false);
+        _mainMenuCanvasGO.SetActive(false);
+        _ControlsMenuCanvasGO.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(_ControlsMenuFirst);
     }
 
     private void CloseAllMenus()
@@ -100,6 +119,11 @@ public class MenuManager : MonoBehaviour
     public void OnSettingsPress()
     {
         OpenSettingsMenuHandle();
+    }
+
+    public void OnControlsPress()
+    {
+        OpenControlsMenuHandle();
     }
 
     public void OnResumePress()
