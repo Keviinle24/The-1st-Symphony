@@ -28,6 +28,6 @@ public class NextSceneForIntro : MonoBehaviour
         yield return new WaitForSeconds(delayAfterVideo);
 
         // Load the next scene
-        SceneManager.LoadScene("StartGame");
+        SceneManager.LoadScene(nextSceneName);
     }
 }

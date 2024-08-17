@@ -4279,7 +4279,7 @@ MonoBehaviour:
   BG_Music: {fileID: 0}
   fadein: 0
   fadeout: 0
-  timeToFade: 1
+  timeToFade: 1.5
 --- !u!4 &662292001
 Transform:
   m_ObjectHideFlags: 0
