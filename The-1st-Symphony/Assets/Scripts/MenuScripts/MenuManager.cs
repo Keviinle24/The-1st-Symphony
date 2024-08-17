@@ -142,4 +142,11 @@ public class MenuManager : MonoBehaviour
     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void QuitToStartPress()
+    {
+        Unpause();
+        SceneManager.LoadScene("StartGame");
+
+    }
+
 }
