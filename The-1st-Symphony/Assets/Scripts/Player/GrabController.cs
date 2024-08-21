@@ -15,6 +15,10 @@ public class GrabController : MonoBehaviour
 
     void Update()
     {
+        if (!canGrab)
+        {
+            inRange = false;
+        }
         
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);
     if (canGrab){

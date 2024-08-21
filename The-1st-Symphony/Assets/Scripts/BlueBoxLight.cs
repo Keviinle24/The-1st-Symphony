@@ -7,6 +7,7 @@ public class BlueBoxLight : MonoBehaviour
     public GameObject lightToActivate;  // Reference to the light to activate
      public GameObject[] Players; // Array of Player GameObjects
     private GrabController[] playerDetectionScripts; // Array of GrabController scripts
+    public float detectionRadius = 10f;
 
     private void Start()
     {
@@ -57,14 +58,43 @@ public class BlueBoxLight : MonoBehaviour
             }
         }
 
-        // Activate or deactivate the light based on the flag
+        GameObject closestPlayer = null;
+        float closestDistanceSqr = Mathf.Infinity;
+
+        foreach (GameObject player in Players)
+        {
+            if (player != null)
+            {
+                float distanceSqr = (transform.position - player.transform.position).sqrMagnitude;
+                if (distanceSqr < closestDistanceSqr)
+                {
+                    closestDistanceSqr = distanceSqr;
+                    closestPlayer = player;
+                }
+            }
+        }
+        bool PlayerClose = false;
+        if (closestPlayer != null)
+        {
+            float distance = Mathf.Sqrt(closestDistanceSqr);
+            if (distance <= detectionRadius)
+            {
+               // Debug.Log("" + distance);
+
+                 PlayerClose = true;
+            }
+        }
+        bool LightON = false;
+        if (anyInRange){ //if(anyInRange && PlayerClose){
+            LightON = true;
+        }
         if (lightToActivate != null)
         {
-            lightToActivate.SetActive(anyInRange);
+            lightToActivate.SetActive(LightON);
         }
         else
         {
             Debug.LogWarning("Light GameObject is not assigned.");
         }
-    }
-}
+    
+}}
