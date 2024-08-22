@@ -7,6 +7,8 @@ public class playerpush : MonoBehaviour {
     public LayerMask boxMask; // Layer mask to filter which objects the raycast can hit.
     private Rigidbody2D rb;
     GameObject box; // Variable to store the reference to the pushable box.
+    public bool controllerT = false;
+
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -19,7 +21,7 @@ public class playerpush : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance, boxMask); 
         // Casts a ray from the player's position to the right, filtered by the boxMask, up to the specified distance.
 
-        if (hit.collider != null && hit.collider.gameObject.tag == "pushable" && Input.GetKey(KeyCode.E)) {
+        if ((hit.collider != null && hit.collider.gameObject.tag == "pushable" && Input.GetKey(KeyCode.E)) || (hit.collider != null && hit.collider.gameObject.tag == "pushable" && Input.GetAxisRaw("right trigger") > 0f)) {
             // Checks if the raycast hit something, if that something has the tag "pushable", and if the "E" key is being pressed.
 
             box = hit.collider.gameObject; // Stores the reference to the hit pushable box.
@@ -34,8 +36,12 @@ public class playerpush : MonoBehaviour {
                  
             }
             // Connects the box's FixedJoint2D to the player's Rigidbody2D, so they move together.
+            if(Input.GetAxisRaw("right trigger") > 0f)
+            {
+                controllerT = true;
+            }
             
-        } else if (Input.GetKeyUp(KeyCode.E)) {
+        } else if (Input.GetKeyUp(KeyCode.E) || (controllerT && Input.GetAxisRaw("right trigger") == 0f)) {
             // Checks if the "E" key was released.
 
             box.GetComponent<FixedJoint2D>().enabled = false; // Disables the FixedJoint2D component on the box.
